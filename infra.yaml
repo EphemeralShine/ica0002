@@ -2,4 +2,9 @@
   - name: Initial setup
     hosts: all
     roles:
-      - init
+     - init
+
+  - name: Web server
+    hosts: web_servers
+    roles: 
+     - nginx   
