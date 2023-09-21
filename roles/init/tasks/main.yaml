@@ -1,23 +1,23 @@
 #- name: Ansible ping module
 # ansible.builtin.ping:
 
-- name: Juri user module
-  ansible.builtin.user:
-    name: juri
+# - name: Juri user module
+#   ansible.builtin.user:
+#     name: juri
 
-- name: Roman user module
-  ansible.builtin.user:
-    name: roman
+# - name: Roman user module
+#   ansible.builtin.user:
+#     name: roman
 
-- name: Juri authorized key module
-  ansible.posix.authorized_key:
-    user: juri
-    key: https://github.com/hudolejev.keys
+# - name: Juri authorized key module
+#   ansible.posix.authorized_key:
+#     user: juri
+#     key: https://github.com/hudolejev.keys
 
-- name: Roman authorized key module
-  ansible.posix.authorized_key:
-    user: roman
-    key: https://github.com/romankuchin.keys
+# - name: Roman authorized key module
+#   ansible.posix.authorized_key:
+#     user: roman
+#     key: https://github.com/romankuchin.keys
 
 - name: Update APT cache
   ansible.builtin.apt:
