@@ -7,5 +7,10 @@
     name: nginx
     state: started
     enabled: true
-  notify: REstart nginx
+  notify: Restart nginx
 
+- name: config file
+  ansible.builtin.copy:
+    dest: /etc/nginx/sites-enabled/default 
+    src: default
+  notify: Restart nginx
