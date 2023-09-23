@@ -7,3 +7,5 @@
     name: nginx
     state: started
     enabled: true
+  notify: REstart nginx
+
