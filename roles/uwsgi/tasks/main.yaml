@@ -5,10 +5,12 @@
       - uwsgi-plugin-python3
 
 - name: uWSGI configuration
-  ansible.builtin.copy:
+  ansible.builtin.template:
     dest: /etc/uwsgi/apps-enabled/agama.ini
-    src: agama.ini
+    src: agama.ini.j2
     owner: agama
+    mode: 0600
+  no_log: true
   notify: Restart uWSGI
 
 - name: uWSGI service
