@@ -1,0 +1,8 @@
+- name: Restart bind
+  ansible.builtin.service:
+    name: bind9
+    state: restarted
+
+- name: Reload zone
+  ansible.builtin.command:
+    cmd: rndc reload

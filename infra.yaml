@@ -4,6 +4,16 @@
     roles:
      - init
 
+  - name: Systemd resolved
+    hosts: all
+    roles:
+     - systemd_resolved
+
+  - name : DNS server
+    hosts: dns_servers
+    roles:
+     - bind
+
   - name: Database server
     hosts: db_servers
     roles:
@@ -15,3 +25,4 @@
      - agama
      - uwsgi
      - nginx   
+

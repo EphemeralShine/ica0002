@@ -1,4 +1,4 @@
-mysql_host: 192.168.43.152
+mysql_host: db
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -8,3 +8,12 @@ mysql_password: !vault |
           31363162306465623965326434303166373234323432646234616131393932656561613434666533
           3362363365643135370a643061663463386536653638353937343632626661626138336365386463
           3264
+dns_forwarders:
+  - 1.1.1.1
+  - 8.8.8.8
+
+dns_access:
+  - 192.168.42.0/23
+  - 127.0.0.0/8
+
+startup_name: fullbright.df

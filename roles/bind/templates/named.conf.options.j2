@@ -1,0 +1,18 @@
+
+acl dne {
+	{%- for n in dns_access -%}
+    {{ n }};
+    {%- endfor -%}
+};
+options {
+	directory "/var/lib/bind";
+
+	forwarders {
+      {% for n in dns_forwarders %}
+      {{ n }};
+      {% endfor %}
+	};
+
+    allow-query { dne; };
+	dnssec-validation no;
+};

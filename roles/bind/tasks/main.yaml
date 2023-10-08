@@ -1,0 +1,24 @@
+- name: bind packages
+  ansible.builtin.apt:
+    name: bind9
+
+- name: bind service
+  ansible.builtin.service:
+    name: bind9
+    state: started
+    enabled: true
+
+- name: dns named confs
+  ansible.builtin.template:
+    src: named.conf.{{ item }}.j2
+    dest: /etc/bind/named.conf.{{ item }}
+  loop: 
+    - options
+    - local
+  notify: Restart bind
+
+- name: dns_zones
+  ansible.builtin.template:
+    src: zone.j2
+    dest: /var/lib/bind/db.fullbright.df
+  notify: Reload zone
