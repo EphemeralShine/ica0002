@@ -4,15 +4,15 @@
     roles:
      - init
 
-  - name: Systemd resolved
-    hosts: all
-    roles:
-     - systemd_resolved
-
   - name : DNS server
     hosts: dns_servers
     roles:
      - bind
+
+  - name: Systemd resolved
+    hosts: all
+    roles:
+     - systemd_resolved
 
   - name: Database server
     hosts: db_servers
@@ -26,3 +26,7 @@
      - uwsgi
      - nginx   
 
+  - name: Prometheus
+    hosts: prometheus
+    roles:
+     - prometheus

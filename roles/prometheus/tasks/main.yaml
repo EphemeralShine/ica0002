@@ -1,0 +1,26 @@
+- name: Prometheus packages
+  ansible.builtin.apt:
+    name: prometheus
+
+- name: Prometheus service
+  ansible.builtin.service:
+    name: prometheus
+    state: started
+    enabled: true
+
+- name: Prometheus job
+  ansible.builtin.template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+  notify: Restart prometheus
+
+- name: Debug SSH Port
+  debug:
+    var: ansible_port
+
+
+- name: Prometheus ARGS
+  ansible.builtin.template:
+    src: prometheus.j2
+    dest: /etc/default/prometheus
+  notify: Restart prometheus

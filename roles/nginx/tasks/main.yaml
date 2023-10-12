@@ -9,7 +9,7 @@
     enabled: true
 
 - name: Config file
-  ansible.builtin.copy:
+  ansible.builtin.template:
     dest: /etc/nginx/sites-enabled/default 
-    src: default
+    src: default.j2
   notify: Restart nginx
