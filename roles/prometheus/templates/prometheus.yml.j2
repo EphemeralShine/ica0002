@@ -19,13 +19,14 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: linux
-    # If prometheus-node-exporter is installed, grab stats about the local
-    # machine by default.
+
+{% for i in prometheus_jobs %}
+  - job_name: {{ i['name'] }}
     static_configs:
       - targets:
-        {% for n in groups['all'] -%}
-          - {{ n }}:9100
-        {% endfor -%}
+        {% for n in groups[i['target_group']] -%}
+        - {{ n }}:{{ i['target_port'] }}
+        {% endfor +%}
+{% endfor %}
 
   

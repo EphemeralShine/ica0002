@@ -17,3 +17,17 @@ dns_access:
   - 127.0.0.0/8
 
 startup_name: fullbright.df
+
+prometheus_jobs:
+  - name: linux
+    target_port: 9100
+    target_group: all
+  - name: bind9
+    target_port: 9119
+    target_group: dns_servers
+  - name: nginx
+    target_port: 9113
+    target_group: web_servers
+  - name: mysql
+    target_port: 9104
+    target_group: db_servers

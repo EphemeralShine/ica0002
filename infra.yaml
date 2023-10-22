@@ -3,31 +3,37 @@
     hosts: all
     roles:
      - init
+    tags: init
 
   - name : DNS server
     hosts: dns_servers
     roles:
      - bind
+    tags: dns
 
   - name: Systemd resolved
     hosts: all
     roles:
      - systemd_resolved
+    tags: dns
 
   - name: Database server
     hosts: db_servers
     roles:
       - mysql
+    tags: db
 
   - name: Web server
     hosts: web_servers
     roles:
      - agama
      - uwsgi
-     - nginx   
+     - nginx
+    tags: w   
 
   - name: Prometheus
     hosts: prometheus
     roles:
      - nginx
      - prometheus
+    tags: p

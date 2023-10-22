@@ -22,3 +22,13 @@
     src: zone.j2
     dest: /var/lib/bind/db.fullbright.df
   notify: Reload zone
+
+- name: bind exporters
+  ansible.builtin.apt:
+    name: prometheus-bind-exporter
+
+- name: bind exporter service
+  ansible.builtin.service:
+    name: prometheus-bind-exporter
+    state: started
+    enabled: true

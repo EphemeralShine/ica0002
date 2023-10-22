@@ -16,3 +16,6 @@ options {
     allow-query { dne; };
 	dnssec-validation no;
 };
+statistics-channels {
+  inet 127.0.0.1 port 8053 allow { 127.0.0.1; };
+};
