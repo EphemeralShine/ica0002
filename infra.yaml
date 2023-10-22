@@ -29,4 +29,5 @@
   - name: Prometheus
     hosts: prometheus
     roles:
+     - nginx
      - prometheus
