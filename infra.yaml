@@ -37,3 +37,9 @@
      - nginx
      - prometheus
     tags: p
+
+  - name: Grafana
+    hosts: grafana
+    roles:
+     - grafana
+    tags: g

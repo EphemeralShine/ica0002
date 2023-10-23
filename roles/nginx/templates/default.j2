@@ -1,4 +1,10 @@
 server {
+	listen 8080 default_server;
+	location = /stub_status {
+       stub_status;
+	}
+}
+server {
 	listen 80 default_server;
 	root /var/www/html;
 	index index.html index.htm index.nginx-debian.html;
@@ -8,7 +14,6 @@ server {
 		uwsgi_pass localhost:8500;
 		include uwsgi_params;
 	}
-	
     {% if inventory_hostname in groups['prometheus'] %}
 		location /prometheus {
 		proxy_pass http://localhost:9090;

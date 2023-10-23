@@ -14,11 +14,6 @@
     dest: /etc/prometheus/prometheus.yml
   notify: Restart prometheus
 
-- name: Debug SSH Port
-  debug:
-    var: ansible_port
-
-
 - name: Prometheus ARGS
   ansible.builtin.template:
     src: prometheus.j2
