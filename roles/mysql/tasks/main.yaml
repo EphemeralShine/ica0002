@@ -1,16 +1,17 @@
-- name: Mysql package
-  ansible.builtin.apt:
-   name: mysql-server
+- name: Mysql exporter config
+  ansible.builtin.template:
+    dest: /var/lib/prometheus/.my.cnf
+    src: my.cnf.j2
+    owner: prometheus
+    mode: 400
+  no_log: true
 
-- name: Mysql service
-  ansible.builtin.service:
-    name: mysql
-    state: started
-    enabled: true
-
-- name: Python library for mysql
+- name: Mysql packages
   ansible.builtin.apt:
-   name: python3-pymysql
+   name: 
+   - mysql-server
+   - python3-pymysql
+   - prometheus-mysqld-exporter
 
 - name: Database creation
   community.mysql.mysql_db:
@@ -30,6 +31,7 @@
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify: Restart mysql
 
 - name: MySQL exporter user
   community.mysql.mysql_user:
@@ -37,28 +39,18 @@
     password: "{{ mysql_exporter_password }}"
     host: "%"
     priv: 
-      '*.*': 'PROCESS,REPLICATION CLIENT,SELECT'
+      '*.*:PROCESS,REPLICATION CLIENT,SELECT'
     login_unix_socket: /var/run/mysqld/mysqld.sock
   no_log: true
   notify: Restart mysql exporter
 
-- name: Mysql exporter config
-  ansible.builtin.template:
-    dest: /var/lib/prometheus/.my.cnf
-    src: my.cnf.j2
-    owner: prometheus
-    mode: 0600
-  no_log: true
-  notify: Restart mysql exporter
-
-- name: Mysql exporter
-  ansible.builtin.apt:
-    name: prometheus-mysqld-exporter
-
-- name: Mysql exporter service
+- name: Mysql services
   ansible.builtin.service:
-    name: prometheus-mysqld-exporter
+    name: "{{ item }}"
     state: started
     enabled: true
+  loop:
+    - mysql
+    - prometheus-mysqld-exporter
   
 

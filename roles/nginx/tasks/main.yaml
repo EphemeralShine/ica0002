@@ -1,6 +1,8 @@
-- name: Nginx package
+- name: Nginx packages
   ansible.builtin.apt:
-    name: nginx
+    name: 
+    - nginx
+    - prometheus-nginx-exporter
 
 - name: Nginx service
   ansible.builtin.service:
@@ -12,13 +14,11 @@
   ansible.builtin.template:
     dest: /etc/nginx/sites-enabled/default 
     src: default.j2
-  notify: Restart nginx
+  notify: 
+    - Restart nginx
+    - Restart nginx exporter
 
-- name: Nginx exporter
-  ansible.builtin.apt:
-    name: prometheus-nginx-exporter
-
-- name: Nginx exporter service
+- name: Nginx services
   ansible.builtin.service:
     name: prometheus-nginx-exporter
     state: started
