@@ -21,3 +21,22 @@
     dest: /etc/grafana/grafana.ini
     src: grafana.ini.j2
   notify: Restart grafana
+
+- name: Grafana jsons
+  ansible.builtin.copy:
+    dest: /etc/grafana/dashboards/main.json
+    src: main.json
+  notify: Restart grafana
+
+- name: Grafana datasource
+  ansible.builtin.copy:
+   dest: /etc/grafana/provisioning/datasources/sample.yaml
+   src: prometheusdt.yaml
+  notify: Restart grafana
+
+- name: Grafana dashboard
+  ansible.builtin.copy:
+   dest: /etc/grafana/provisioning/dashboards/sample.yaml
+   src: main.yaml
+  notify: Restart grafana
+  

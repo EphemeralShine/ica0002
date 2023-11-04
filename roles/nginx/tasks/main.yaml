@@ -20,7 +20,9 @@
 
 - name: Nginx services
   ansible.builtin.service:
-    name: prometheus-nginx-exporter
+    name: "{{ item }}"
     state: started
     enabled: true
-  notify: Restart nginx exporter
+  loop:
+    - nginx
+    - prometheus-nginx-exporter
