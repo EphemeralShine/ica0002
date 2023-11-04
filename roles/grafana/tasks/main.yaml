@@ -16,15 +16,24 @@
     state: started
     enabled: yes
 
-- name: Grafana reverse proxy
+- name: Grafana reverse proxy and user cfg
   ansible.builtin.template:
     dest: /etc/grafana/grafana.ini
     src: grafana.ini.j2
+    owner: grafana
+    mode: 0600
+  no_log: false
   notify: Restart grafana
+
+- name: Dashboards directory
+  ansible.builtin.file:
+    owner: grafana
+    state: directory
+    path: /var/lib/grafana/dashboards
 
 - name: Grafana jsons
   ansible.builtin.copy:
-    dest: /etc/grafana/dashboards/main.json
+    dest: /var/lib/grafana/dashboards/
     src: main.json
   notify: Restart grafana
 

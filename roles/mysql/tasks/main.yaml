@@ -3,7 +3,7 @@
     dest: /var/lib/prometheus/.my.cnf
     src: my.cnf.j2
     owner: prometheus
-    mode: 400
+    mode: 0600
   no_log: true
 
 - name: Mysql packages
