@@ -1,5 +1,5 @@
 [Unit]
-Description=Service to check for latency
+Description=Service to check for connectivity and latency
 Documentation=https://github.com/romankuchin/ica0002-2023/tree/main/08-logging/08-files
 After=network-online.target
 

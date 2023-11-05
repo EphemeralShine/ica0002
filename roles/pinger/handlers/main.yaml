@@ -2,7 +2,7 @@
   ansible.builtin.systemd:
     daemon_reload: true
     name: pinger
-    state: reloaded
+    state: restarted
 
 - name: Restart pinger
   ansible.builtin.service:

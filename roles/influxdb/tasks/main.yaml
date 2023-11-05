@@ -10,9 +10,35 @@
   ansible.builtin.apt:
     name: influxdb
 
+- name: InfluxDB config
+  ansible.builtin.copy:
+    src: influxdb.conf
+    dest: /etc/influxdb/influxdb.conf
+  notify: Restart influxdb
+
 - name: InfluxDB service
   ansible.builtin.service:
     name: influxdb
+    state: started
+    enabled: yes
+
+- name: Influxdb stats exporter binary
+  ansible.builtin.get_url:
+    url: https://github.com/carlpett/influxdb_stats_exporter/releases/download/v0.1.1/influx_stats_exporter_linux_amd64
+    dest: /usr/local/bin/influx_stats_exporter_linux_amd64
+    mode: u+x
+    owner: prometheus
+
+- name: Influxdb stats exporter service config 
+  ansible.builtin.copy:
+    src: prometheus-influxdb-stats-exporter.service
+    dest: /etc/systemd/system/prometheus-influxdb-stats-exporter.service
+    mode: 0644
+  notify: Reload systemd
+
+- name: Influx stats exporter service
+  ansible.builtin.service:
+    name: prometheus-influxdb-stats-exporter
     state: started
     enabled: yes
 
