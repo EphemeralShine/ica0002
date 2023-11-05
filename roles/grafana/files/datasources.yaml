@@ -1,0 +1,30 @@
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    orgId: 1
+    isDefault: true
+    url: http://ephemeralshine-2:9090/prometheus
+    editable: false
+
+  - name: influxdb:latency
+    type: influxdb
+    uid: PB54018EEE073B123
+    access: proxy
+    orgId: 1
+    isDefault: false
+    url: http://ephemeralshine-2:8086
+    database: latency
+    editable: false
+  
+  - name: influxdb:telegraf
+    type: influxdb
+    uid: "PD48E60E9DE8E4DA7"
+    access: proxy
+    orgId: 1
+    isDefault: false
+    url: http://ephemeralshine-2:8086
+    database: telegraf
+    editable: false

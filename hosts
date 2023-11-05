@@ -15,3 +15,9 @@ EphemeralShine-2
 
 [grafana]
 EphemeralShine-1
+
+[influxdb]
+EphemeralShine-2
+
+[pinger]
+EphemeralShine-1

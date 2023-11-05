@@ -34,3 +34,9 @@
     name: prometheus-node-exporter
     state: started
     enabled: true
+
+- name: Rsyslog config
+  ansible.builtin.copy:
+   src: 10-telegraf.conf
+   dest: /etc/rsyslog.d/10-telegraf.conf
+  notify: Restart rsyslog

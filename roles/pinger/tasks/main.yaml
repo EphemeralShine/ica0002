@@ -1,0 +1,45 @@
+- name: Pinger user
+  ansible.builtin.user:
+    name: pinger    
+    shell: /bin/bash
+
+- name: Install fping
+  ansible.builtin.apt:
+    name: fping
+  notify: Restart pinger
+
+- name: Pinger script
+  ansible.builtin.copy:
+    owner: pinger
+    mode: u+x
+    dest: /usr/local/bin/pinger
+    src: pinger.sh
+  notify: Restart pinger
+
+- name: Pinger service config
+  ansible.builtin.copy:
+    owner: pinger
+    dest: /etc/systemd/system/
+    src: pinger.service
+  notify: Reload systemd
+
+- name: Pinger config directory
+  ansible.builtin.file:
+    owner: pinger
+    state: directory
+    path: /etc/pinger
+
+- name: Pinger config
+  ansible.builtin.template:
+    owner: pinger
+    src: pinger.conf.j2
+    dest: /etc/pinger/pinger.conf
+  notify: Restart pinger
+
+- name: Pinger service
+  ansible.builtin.service:
+    name: pinger
+    state: started
+    enabled: yes
+
+

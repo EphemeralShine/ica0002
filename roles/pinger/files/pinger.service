@@ -1,0 +1,11 @@
+[Unit]
+Description=Service to check for latency
+Documentation=https://github.com/romankuchin/ica0002-2023/tree/main/08-logging/08-files
+After=network-online.target
+
+[Service]
+User=pinger
+ExecStart=/usr/local/bin/pinger
+
+[Install]
+WantedBy=multi-user.target

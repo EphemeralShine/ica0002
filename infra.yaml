@@ -43,3 +43,15 @@
     roles:
      - grafana
     tags: g
+
+  - name: InfluxDB
+    hosts: influxdb
+    roles:
+     - influxdb
+    tags: i
+
+  - name: Pinger
+    hosts: pinger
+    roles:
+     - pinger
+    tags: ping
