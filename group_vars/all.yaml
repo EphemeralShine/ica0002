@@ -25,6 +25,8 @@ grafana_password: !vault |
           3766343238306462320a383664653362356132636636343263356165386161396166346431316536
           3839
 
+backup_server: 192.168.42.132
+backup_server_ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 
 dns_forwarders:
   - 1.1.1.1
@@ -34,7 +36,7 @@ dns_access:
   - 192.168.42.0/23
   - 127.0.0.0/8
 
-startup_name: fullbright.df
+domain: fullbright.df
 
 prometheus_jobs:
   - name: linux

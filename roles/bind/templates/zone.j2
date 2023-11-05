@@ -1,13 +1,13 @@
 $TTL	604800
 {% for vm in groups['dns_servers'] %}
-{{ startup_name }}.	IN	SOA	{{ vm }}.{{startup_name }}. danka.{{startup_name }}. (
+{{ domain }}.	IN	SOA	{{ vm }}.{{ domain }}. danka.{{ domain }}. (
 			      2		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ;
-{{ startup_name }}.	IN	NS	{{ vm }}
+{{ domain }}.	IN	NS	{{ vm }}
 {% endfor %}
 
 {% for vm in groups['all'] %}
@@ -21,3 +21,5 @@ db IN CNAME {{ vm }}
 {% for vm in groups['web_servers'] %}
 nginx IN CNAME {{ vm }}
 {% endfor %}
+
+backup	IN	A	{{ backup_server }}

@@ -23,6 +23,21 @@
   ansible.builtin.apt:
     cache_valid_time: 86400
 
+- name: Backup user
+  ansible.builtin.user:
+    name: backup
+    home: /home/backup
+    create_home: true
+    move_home: true
+    generate_ssh_key: true
+
+- name: Backup ssh keys
+  ansible.builtin.template:
+    src: known_hosts.j2
+    dest: /home/backup/.ssh/known_hosts
+    owner: backup
+    group: backup
+
 - name : Prometheus node exporters and certs
   ansible.builtin.apt:
     name: 
