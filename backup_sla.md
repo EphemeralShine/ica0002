@@ -5,10 +5,11 @@
 - Influx databases
 - ansible repository 
 ## RPO:
-- backup daily at 1a.m.
+- full backup weekly on saturday at 11p.m. UTC
+- incremental backup daily at 11p.m. UTC
 ## Retention:
-- 91 versions
-- 13 weeks retention
+- 56 versions
+- 8 weeks retention
 ## Usability checks:
 - once every 4 weeks
 - team activity

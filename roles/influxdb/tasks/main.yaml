@@ -65,3 +65,10 @@
     name: telegraf
     state: started
     enabled: yes
+
+- name: Backup directory
+  ansible.builtin.file:
+    state: directory
+    owner: backup
+    path: /home/backup/influxdb
+    mode: 600

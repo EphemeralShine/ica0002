@@ -28,7 +28,6 @@
     name: backup
     home: /home/backup
     create_home: true
-    move_home: true
     generate_ssh_key: true
 
 - name: Backup ssh keys
@@ -38,11 +37,12 @@
     owner: backup
     group: backup
 
-- name : Prometheus node exporters and certs
+- name : Prometheus node exporters, duplicity and certs
   ansible.builtin.apt:
     name: 
     - prometheus-node-exporter
     - ca-certificates>=20230311ubuntu0.20.04.1
+    - duplicity
 
 - name: prometheus-node-exporter service
   ansible.builtin.service:
@@ -55,3 +55,10 @@
    src: 10-telegraf.conf
    dest: /etc/rsyslog.d/10-telegraf.conf
   notify: Restart rsyslog
+
+- name: Backup directory
+  ansible.builtin.file:
+    state: directory
+    owner: backup
+    path: /home/backup/restore
+    mode: 0700
