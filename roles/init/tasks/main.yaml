@@ -27,7 +27,6 @@
   ansible.builtin.user:
     name: backup
     home: /home/backup
-    create_home: true
     generate_ssh_key: true
 
 - name: Backup ssh keys
@@ -56,9 +55,10 @@
    dest: /etc/rsyslog.d/10-telegraf.conf
   notify: Restart rsyslog
 
-- name: Backup directory
+- name: Backup restore directory
   ansible.builtin.file:
     state: directory
     owner: backup
+    group: backup
     path: /home/backup/restore
-    mode: 0700
+    mode: 0755

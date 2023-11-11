@@ -70,5 +70,11 @@
   ansible.builtin.file:
     state: directory
     owner: backup
+    group: backup
     path: /home/backup/influxdb
-    mode: 600
+    mode: 0755
+
+- name: Cron tab for influxdb backup
+  ansible.builtin.copy:
+    src: influxdb-backup
+    dest: /etc/cron.d/influxdb-backup

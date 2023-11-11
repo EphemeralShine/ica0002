@@ -1,0 +1,3 @@
+55 23 * * *  backup  rm -rf /home/backup/influxdb/*; influxd backup -portable -database telegraf /home/backup/influxdb
+56 23 * * 6  backup  duplicity --no-encryption full /home/backup/influxdb/ rsync://EphemeralShine@backup/influxdb
+56 23 * * 0-5  backup  duplicity --no-encryption incremental /home/backup/influxdb/ rsync://EphemeralShine@backup/influxdb

@@ -3,7 +3,6 @@
 ## Coverage: 
 - MySQL databases
 - Influx databases
-- ansible repository 
 ## RPO:
 - full backup weekly on saturday at 11p.m. UTC
 - incremental backup daily at 11p.m. UTC

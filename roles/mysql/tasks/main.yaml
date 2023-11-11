@@ -59,7 +59,7 @@
     owner: backup
     group: backup
     path: /home/backup/mysql
-    mode: 0700
+    mode: 0755
 
 - name: Backup user
   community.mysql.mysql_user:
