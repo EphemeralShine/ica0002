@@ -36,7 +36,7 @@ sudo -u backup duplicity --no-encryption restore rsync://EphemeralShine@backup/.
 ```
 Only incase this error occurs: 
 ```
-Restore destination directory /home/backup/restore/mysql already exists.
+Restore destination directory /home/backup/restore/influxdb already exists.
 Will not overwrite.
 ```
 Run this command:
