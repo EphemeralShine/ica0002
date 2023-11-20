@@ -21,7 +21,9 @@
     hosts: db_servers
     roles:
       - mysql
-    tags: db
+    tags: 
+     - db
+     - mx
 
   - name: Web server
     hosts: web_servers
@@ -29,7 +31,9 @@
      - agama
      - uwsgi
      - nginx
-    tags: w   
+    tags: 
+     - w
+     - mx   
 
   - name: Prometheus
     hosts: prometheus

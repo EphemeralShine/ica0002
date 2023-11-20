@@ -1,11 +1,12 @@
-EphemeralShine-1 ansible_host=193.40.156.67 ansible_port=30422 ansible_user=ubuntu
-EphemeralShine-2 ansible_host=193.40.156.67 ansible_port=31822 ansible_user=ubuntu
+EphemeralShine-1 ansible_host=193.40.156.67 ansible_port=35022 ansible_user=ubuntu
+EphemeralShine-2 ansible_host=193.40.156.67 ansible_port=35322 ansible_user=ubuntu
 
 [web_servers]
 EphemeralShine-1
 
 [db_servers]
 EphemeralShine-2
+EphemeralShine-1
 
 [dns_servers]
 EphemeralShine-2

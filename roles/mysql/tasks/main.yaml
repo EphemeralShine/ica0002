@@ -17,14 +17,17 @@
   community.mysql.mysql_db:
     name: "{{ mysql_database }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica
 
 - name: Mysql config
-  ansible.builtin.copy:
-    src: override.cnf
+  ansible.builtin.template:
+    src: override.cnf.j2
     dest: /etc/mysql/mysql.conf.d/override.cnf
   notify: Restart mysql
 
-- name: MySQL user
+- name: MySQL agama user
   community.mysql.mysql_user:
     name: "{{ mysql_user }}"
     password: "{{ mysql_password }}"
@@ -43,6 +46,15 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
   no_log: true
   notify: Restart mysql exporter
+
+- name: MySQL replication user
+  community.mysql.mysql_user:
+    name: "{{ mysql_replication_user }}"
+    password: "{{ mysql_replication_password }}"
+    host: "%"
+    priv: "*.*:REPLICATION SLAVE"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify: Restart mysql
 
 - name: Mysql services
   ansible.builtin.service:
@@ -79,6 +91,22 @@
   no_log: true
 
 - name: Cron tab for mysql backup
-  ansible.builtin.copy:
-    src: mysql-backup
+  ansible.builtin.template:
+    src: mysql-backup.j2
     dest: /etc/cron.d/mysql-backup
+
+- name: Slave metrics
+  ansible.builtin.copy:
+    src: prometheus-mysqld-exporter
+    dest: /etc/default/prometheus-mysqld-exporter 
+  notify: Restart mysql exporter
+
+- name: MySQL replica read-only mode
+  community.mysql.mysql_variables:
+    variable: read_only
+    value: "{{ 'OFF' if inventory_hostname == mysql_host else 'ON' }}"
+    mode: persist
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica
