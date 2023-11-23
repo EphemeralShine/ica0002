@@ -1,0 +1,63 @@
+- name: Grafana gpg key
+  ansible.builtin.apt_key:
+    url: https://packages.grafana.com/gpg.key
+
+- name: Grafana repository
+  ansible.builtin.apt_repository:
+    repo: deb https://packages.grafana.com/oss/deb stable main
+
+- name: Grafana
+  ansible.builtin.apt:
+    name: grafana
+
+- name: Grafana service
+  ansible.builtin.service:
+    name: grafana-server
+    state: started
+    enabled: yes
+
+- name: Grafana reverse proxy and user cfg
+  ansible.builtin.template:
+    dest: /etc/grafana/grafana.ini
+    src: grafana.ini.j2
+    owner: grafana
+    mode: 0600
+  no_log: false
+  notify: Restart grafana
+
+- name: Dashboards directory
+  ansible.builtin.file:
+    owner: grafana
+    state: directory
+    path: /var/lib/grafana/dashboards
+
+- name: Main json
+  ansible.builtin.copy:
+    dest: /var/lib/grafana/dashboards/
+    src: main.json
+  notify: Restart grafana
+
+- name: Syslog json
+  ansible.builtin.copy:
+    dest: /var/lib/grafana/dashboards/
+    src: syslog.json
+  notify: Restart grafana
+
+- name: MySQL json
+  ansible.builtin.copy:
+    dest: /var/lib/grafana/dashboards/
+    src: mysql.json
+  notify: Restart grafana
+
+- name: Grafana datasource
+  ansible.builtin.copy:
+   dest: /etc/grafana/provisioning/datasources/sample.yaml
+   src: datasources.yaml
+  notify: Restart grafana
+
+- name: Grafana dashboard
+  ansible.builtin.copy:
+   dest: /etc/grafana/provisioning/dashboards/sample.yaml
+   src: main.yaml
+  notify: Restart grafana
+  

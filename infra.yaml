@@ -45,6 +45,7 @@
   - name: Grafana
     hosts: grafana
     roles:
+     - docker
      - grafana
     tags: g
 

@@ -14,10 +14,6 @@ $TTL	604800
 {{ vm }}	IN	A	{{ hostvars[vm]['ansible_default_ipv4']['address'] }}
 {% endfor %}
 
-{% for vm in groups['db_servers'] %}
-db IN CNAME {{ vm }}
-{% endfor %}
-
 {% for vm in groups['web_servers'] %}
 nginx IN CNAME {{ vm }}
 {% endfor %}
