@@ -12,8 +12,10 @@ server {
 	server_name _;
 
 	location / {
-		uwsgi_pass localhost:8500;
-		include uwsgi_params;
+#		uwsgi_pass localhost:{{ agama_port }};
+#		include uwsgi_params;
+        proxy_pass http://localhost:{{ agama_port }};
+		proxy_set_header Host $http_host;
 	}
     {% if inventory_hostname in groups['prometheus'] %}
 		location /prometheus {

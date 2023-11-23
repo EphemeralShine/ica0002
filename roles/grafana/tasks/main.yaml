@@ -34,7 +34,7 @@
     - mysql.json
     - syslog.json
 
-- name: Grafana docker
+- name: Grafana container
   community.docker.docker_container:
     name: grafana
     image: grafana/grafana
