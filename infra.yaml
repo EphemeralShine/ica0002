@@ -28,6 +28,7 @@
   - name: Web server
     hosts: web_servers
     roles:
+     - docker
      - agama
 #     - uwsgi
      - nginx
@@ -60,3 +61,11 @@
     roles:
      - pinger
     tags: ping
+
+  - name: Haproxy
+    hosts: haproxy
+    roles:
+     - keepalived
+     - haproxy
+    tags: h
+    

@@ -1,0 +1,40 @@
+global_defs {
+enable_script_security
+}
+vrrp_script check_haproxy {                
+    script "/home/keepalived_script/vrrp_script" 
+    weight 20                              
+    interval 1               
+}
+vrrp_instance vrrp1 {             
+    interface {{ ansible_facts['default_ipv4']['interface'] }}
+    virtual_router_id 1
+    {% if inventory_hostname == vrrp_master -%}
+    priority 100
+    {% else -%}
+    priority 99
+    {% endif -%}
+    advert_int 1 
+    preempt
+    authentication {
+            auth_type PASS
+            auth_pass {{ vrrp_password }}
+    }                    
+    virtual_ipaddress {
+        {% if hostvars['EphemeralShine-1']['ansible_default_ipv4']['address'].split('.')[2] | int == 42 -%}                     
+        192.168.100.{{ hostvars['EphemeralShine-1']['ansible_default_ipv4']['address'].split('.')[-1] }}/24                   
+        {% else -%}
+        192.168.101.{{ hostvars['EphemeralShine-1']['ansible_default_ipv4']['address'].split('.')[-1] }}/24    
+        {%- endif %}               
+    }
+    unicast_peer {
+    {%- for vm in groups['haproxy'] %}
+    {%- if inventory_hostname != vm %}                   
+        {{ hostvars[vm]['ansible_default_ipv4']['address'] }}
+    {% endif -%}
+    {% endfor -%}
+    }
+    track_script {
+        check_haproxy
+    }
+}

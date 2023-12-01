@@ -1,0 +1,30 @@
+- name: Keepalived packages
+  ansible.builtin.apt:
+    name: keepalived
+
+- name: Keepalived script user
+  ansible.builtin.user:
+    name: keepalived_script
+    home: /home/keepalived_script
+    shell: /bin/bash
+
+- name: Keepalived Config
+  ansible.builtin.template:
+    src: keepalived.conf.j2
+    dest: /etc/keepalived/keepalived.conf
+    mode: 0600
+  no_log: true
+  notify: Restart keepalived
+
+- name: Keepalived script file
+  ansible.builtin.copy:
+    src: vrrp_script
+    dest: /home/keepalived_script/vrrp_script
+    owner: keepalived_script
+    mode: 0700
+
+- name: Keepalived service
+  ansible.builtin.service:
+    name: keepalived
+    state: started
+    enabled: yes
