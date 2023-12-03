@@ -11,7 +11,7 @@
 - name: Pinger script
   ansible.builtin.copy:
     owner: pinger
-    mode: u+x
+    mode: 0700
     dest: /usr/local/bin/pinger
     src: pinger.sh
   notify: Restart pinger

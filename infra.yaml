@@ -25,6 +25,12 @@
      - db
      - mx
 
+  - name: InfluxDB
+    hosts: influxdb
+    roles:
+     - influxdb
+    tags: i
+
   - name: Web server
     hosts: web_servers
     roles:
@@ -34,7 +40,19 @@
      - nginx
     tags: 
      - w
-     - mx   
+     - mx
+
+  - name: Keepalived
+    hosts: ha
+    roles:
+     - keepalived
+    tags: k   
+
+  - name: Haproxy
+    hosts: ha
+    roles:
+     - haproxy
+    tags: h
 
   - name: Prometheus
     hosts: prometheus
@@ -50,22 +68,14 @@
      - grafana
     tags: g
 
-  - name: InfluxDB
-    hosts: influxdb
-    roles:
-     - influxdb
-    tags: i
-
   - name: Pinger
     hosts: pinger
     roles:
      - pinger
     tags: ping
 
-  - name: Haproxy
-    hosts: haproxy
-    roles:
-     - keepalived
-     - haproxy
-    tags: h
+
+
+
+
     

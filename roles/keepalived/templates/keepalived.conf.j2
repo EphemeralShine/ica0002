@@ -28,7 +28,7 @@ vrrp_instance vrrp1 {
         {%- endif %}               
     }
     unicast_peer {
-    {%- for vm in groups['haproxy'] %}
+    {%- for vm in groups['ha'] %}
     {%- if inventory_hostname != vm %}                   
         {{ hostvars[vm]['ansible_default_ipv4']['address'] }}
     {% endif -%}

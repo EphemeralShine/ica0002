@@ -26,8 +26,14 @@ defaults
 
 listen agama
     bind :88
-    {% for vm in groups['haproxy'] %}
+    {% for vm in groups['ha'] %}
     {%- for container in agama_containers -%}
     server {{ container.name }}_vm{{ vm.split('-')[-1] }} {{ vm }}:{{ container.port }} check
     {% endfor %}
 {% endfor %}
+
+listen stats
+    bind :9188
+    stats enable
+    stats uri /stats
+    stats refresh 5s

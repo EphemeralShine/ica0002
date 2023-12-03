@@ -88,3 +88,9 @@ prometheus_jobs:
   - name: influxdb
     target_port: 9424
     target_group: influxdb
+  - name: haproxy
+    target_port: 9101
+    target_group: ha
+  - name: keepalived
+    target_port: 9165
+    target_group: ha
