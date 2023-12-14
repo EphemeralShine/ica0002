@@ -78,3 +78,9 @@
   ansible.builtin.copy:
     src: influxdb-backup
     dest: /etc/cron.d/influxdb-backup
+
+- name: CNAME record
+  ansible.builtin.include_role:
+    name: dns_record
+  vars:
+    dns_record: influxdb

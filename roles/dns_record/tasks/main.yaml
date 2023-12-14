@@ -1,0 +1,11 @@
+- name: Create CNAME record for local machine
+  community.general.nsupdate:
+    key_name: "nsupdate.key"
+    key_secret: "{{ bind_nsupdate_key }}"
+    key_algorithm: "hmac-sha256"
+    server: "{{ groups['dns_masters'][0] }}"
+    record: "{{ dns_record }}"
+    zone: "{{ domain }}"
+    type: "CNAME"
+    value: "{{ inventory_hostname }}"
+  no_log: true

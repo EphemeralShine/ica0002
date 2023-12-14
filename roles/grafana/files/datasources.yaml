@@ -6,7 +6,7 @@ datasources:
     access: proxy
     orgId: 1
     isDefault: true
-    url: http://ephemeralshine-2:9090/prometheus
+    url: http://prometheus:9090/prometheus
     editable: false
 
   - name: influxdb:latency
@@ -15,7 +15,7 @@ datasources:
     access: proxy
     orgId: 1
     isDefault: false
-    url: http://ephemeralshine-2:8086
+    url: http://influxdb:8086
     database: latency
     editable: false
   
@@ -25,6 +25,6 @@ datasources:
     access: proxy
     orgId: 1
     isDefault: false
-    url: http://ephemeralshine-2:8086
+    url: http://influxdb:8086
     database: telegraf
     editable: false

@@ -29,3 +29,9 @@
     name: prometheus-haproxy-exporter
     state: started
     enabled: yes
+
+- name: CNAME record
+  ansible.builtin.include_role:
+    name: dns_record
+  vars:
+    dns_record: "lb{{ inventory_hostname | replace('EphemeralShine', '') }}"

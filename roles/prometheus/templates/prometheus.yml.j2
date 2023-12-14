@@ -25,7 +25,11 @@ scrape_configs:
     static_configs:
       - targets:
         {% for n in groups[i['target_group']] -%}
-        - {{ n }}:{{ i['target_port'] }}
+        {%- if groups[i['target_group']] | length > 1 -%}
+        - {{ i['target_cname'] + n | replace('EphemeralShine', '') }}:{{ i['target_port'] }}
+        {% else %}
+        - {{ i['target_cname'] }}:{{ i['target_port'] }}
+        {%- endif -%}
         {% endfor +%}
 {% endfor %}
 

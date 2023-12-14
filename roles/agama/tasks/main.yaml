@@ -25,5 +25,12 @@
     published_ports: "0.0.0.0:{{ item.port }}:8000"
     volumes: /opt/agama:/etc/agama
     env: AGAMA_DATABASE_URI=mysql+pymysql://{{ mysql_user | string }}:{{ mysql_password | string }}@{{ mysql_host | string }}/{{ mysql_database | string }}
+    restart_policy: always
   loop: "{{ agama_containers }}"
   no_log: true
+
+- name: CNAME record
+  ansible.builtin.include_role:
+    name: dns_record
+  vars:
+    dns_record: "www{{ inventory_hostname | replace('EphemeralShine', '') }}"

@@ -1,4 +1,5 @@
-mysql_host: "{{ groups['db_servers'] | first }}"
+#mysql_host: "{{ groups['db_servers'] | first }}"
+mysql_host: mysql-2
 mysql_database: agama
 mysql_user: agama
 node_id: "{{ (ansible_port / 100) | int }}"
@@ -93,21 +94,28 @@ prometheus_jobs:
   - name: linux
     target_port: 9100
     target_group: all
+    target_cname: EphemeralShine
   - name: bind9
     target_port: 9119
     target_group: dns_servers
+    target_cname: ns
   - name: nginx
     target_port: 9113
-    target_group: all
+    target_group: web_servers
+    target_cname: www
   - name: mysql
     target_port: 9104
     target_group: db_servers
+    target_cname: mysql
   - name: influxdb
     target_port: 9424
     target_group: influxdb
+    target_cname: influxdb
   - name: haproxy
     target_port: 9101
     target_group: ha
+    target_cname: lb
   - name: keepalived
     target_port: 9165
     target_group: ha
+    target_cname: lb

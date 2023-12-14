@@ -19,3 +19,19 @@ keys { transfer.key ;};
 };    
 {% endfor %}
 {% endif %}
+
+zone "168.192.in-addr.arpa" {
+{% if inventory_hostname in groups['dns_masters'] %}
+    type primary;
+    allow-transfer { 127.0.0.1; key transfer.key; };
+    allow-update { key nsupdate.key; };
+{% else %}
+    type secondary;
+    {% for vm in groups['dns_masters'] %}
+    masters { {{ hostvars[vm]['ansible_default_ipv4']['address'] }};
+    {% endfor %}
+    };
+{% endif %}
+    file "db.{{ domain }}.rev";
+};
+ 

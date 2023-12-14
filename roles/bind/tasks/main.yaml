@@ -1,6 +1,8 @@
 - name: bind packages
   ansible.builtin.apt:
-    name: bind9
+    name: 
+      - bind9
+      - python3-dnspython
 
 - name: dns named confs
   ansible.builtin.template:
@@ -13,13 +15,37 @@
   notify: Restart bind
   no_log: true
 
-- name: dns_zones
+- name: Dns zone
   ansible.builtin.template:
     src: zone.j2
     dest: /var/cache/bind/db.fullbright.df
     force: false
   notify: Reload zone
   when: inventory_hostname in groups['dns_masters']
+
+- name: Dns reverse zone
+  ansible.builtin.template:
+    src: zone.rev.j2
+    dest: /var/cache/bind/db.fullbright.df.rev
+    #force: false
+  notify: Reload zone
+  when: inventory_hostname in groups['dns_masters']
+
+- name: Run handlers 
+  meta: flush_handlers
+
+- name: Add backup server A record
+  community.general.nsupdate:
+    key_name: "nsupdate.key"
+    key_secret: "{{ bind_nsupdate_key }}"
+    key_algorithm: "hmac-sha256"
+    server: "localhost"
+    record: "backup"
+    zone: "{{ domain }}"
+    type: "A"
+    value: "{{ backup_server }}"
+  when: inventory_hostname in groups['dns_masters'][0]
+  no_log: true
 
 - name: bind exporters
   ansible.builtin.apt:
@@ -36,3 +62,9 @@
     name: prometheus-bind-exporter
     state: started
     enabled: true
+
+- name: CNAME record
+  ansible.builtin.include_role:
+    name: dns_record
+  vars:
+    dns_record: "ns{{ inventory_hostname | replace('EphemeralShine', '') }}"

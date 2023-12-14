@@ -19,3 +19,9 @@
     src: prometheus.j2
     dest: /etc/default/prometheus
   notify: Restart prometheus
+
+- name: CNAME record
+  ansible.builtin.include_role:
+    name: dns_record
+  vars:
+    dns_record: prometheus
