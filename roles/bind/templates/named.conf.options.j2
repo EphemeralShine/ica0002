@@ -5,7 +5,7 @@ acl dne {
     {%- endfor -%}
 };
 options {
-	directory "/var/lib/bind";
+	directory "/var/cache/bind";
 
 	forwarders {
       {% for n in dns_forwarders %}
@@ -22,4 +22,8 @@ statistics-channels {
 key "transfer.key" {
 	algorithm hmac-sha256;
 	secret "{{ bind_transfer_key }}";
+};
+key "nsupdate.key" {
+	algorithm hmac-sha256;
+	secret "{{ bind_nsupdate_key }}";
 };

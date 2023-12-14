@@ -6,16 +6,20 @@
   ansible.builtin.template:
     src: named.conf.{{ item }}.j2
     dest: /etc/bind/named.conf.{{ item }}
+    mode: 0640
   loop: 
     - options
     - local
   notify: Restart bind
+  no_log: true
 
 - name: dns_zones
   ansible.builtin.template:
     src: zone.j2
     dest: /var/cache/bind/db.fullbright.df
+    force: false
   notify: Reload zone
+  when: inventory_hostname in groups['dns_masters']
 
 - name: bind exporters
   ansible.builtin.apt:

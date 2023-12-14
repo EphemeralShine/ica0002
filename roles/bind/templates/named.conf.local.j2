@@ -1,9 +1,21 @@
 zone "{{ domain }}" {
-{% if %}
+{% if inventory_hostname in groups['dns_masters'] %}
     type primary;
-    file "db.fullbright.df";
-    allow-transfer {
-        key ho. ;}
+    allow-transfer { 127.0.0.1; key transfer.key; };
+    allow-update { key nsupdate.key; };
+{% else %}
+    type secondary;
+    {% for vm in groups['dns_masters'] %}
+    masters { {{ hostvars[vm]['ansible_default_ipv4']['address'] }}; };
+    {% endfor %}
+{% endif %}
+    file "db.{{ domain }}";
 };
-
-};
+ 
+{% if inventory_hostname in groups['dns_slaves'] %}
+{% for vm in groups['dns_masters'] %}
+server {{ hostvars[vm]['ansible_default_ipv4']['address'] }} {
+keys { transfer.key ;};
+};    
+{% endfor %}
+{% endif %}

@@ -1,17 +1,18 @@
 $TTL	604800
-{% for vm in groups['dns_servers'] %}
-{{ domain }}.	IN	SOA	{{ vm }}.{{ domain }}. danka.{{ domain }}. (
+{{ domain }}.	IN	SOA	vm2.{{ domain }}. danka.{{ domain }}. (
 			      2		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ;
+{% for vm in groups['dns_servers'] %}
 {{ domain }}.	IN	NS	{{ vm }}
 {% endfor %}
 
-{% for vm in groups['all'] %}
+{% for vm in groups['dns_servers'] %}
 {{ vm }}	IN	A	{{ hostvars[vm]['ansible_default_ipv4']['address'] }}
 {% endfor %}
 
 backup	IN	A	{{ backup_server }}
+
