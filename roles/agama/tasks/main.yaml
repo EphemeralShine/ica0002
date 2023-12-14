@@ -26,5 +26,4 @@
     volumes: /opt/agama:/etc/agama
     env: AGAMA_DATABASE_URI=mysql+pymysql://{{ mysql_user | string }}:{{ mysql_password | string }}@{{ mysql_host | string }}/{{ mysql_database | string }}
   loop: "{{ agama_containers }}"
-
   no_log: true

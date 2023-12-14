@@ -1,5 +1,5 @@
-EphemeralShine-1 ansible_host=193.40.156.67 ansible_port=34322 ansible_user=ubuntu
-EphemeralShine-2 ansible_host=193.40.156.67 ansible_port=30522 ansible_user=ubuntu
+EphemeralShine-1 ansible_host=193.40.156.67 ansible_port=5522 ansible_user=ubuntu
+EphemeralShine-2 ansible_host=193.40.156.67 ansible_port=10122 ansible_user=ubuntu
 
 [web_servers]
 EphemeralShine-1
@@ -9,8 +9,15 @@ EphemeralShine-2
 EphemeralShine-2
 EphemeralShine-1
 
-[dns_servers]
+[dns_masters]
 EphemeralShine-2
+
+[dns_slaves]
+EphemeralShine-1
+
+[dns_servers:children]
+dns_masters
+dns_slaves
 
 [prometheus]
 EphemeralShine-2

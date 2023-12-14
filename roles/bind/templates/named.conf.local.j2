@@ -1,4 +1,9 @@
 zone "{{ domain }}" {
+{% if %}
     type primary;
     file "db.fullbright.df";
+    allow-transfer {
+        key ho. ;}
+};
+
 };

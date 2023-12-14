@@ -13,7 +13,7 @@
     src: keepalived.conf.j2
     dest: /etc/keepalived/keepalived.conf
     mode: 0600
-  no_log: false
+  no_log: true
   notify: Restart keepalived
 
 - name: Keepalived script file

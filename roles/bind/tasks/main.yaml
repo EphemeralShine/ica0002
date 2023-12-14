@@ -2,12 +2,6 @@
   ansible.builtin.apt:
     name: bind9
 
-- name: bind service
-  ansible.builtin.service:
-    name: bind9
-    state: started
-    enabled: true
-
 - name: dns named confs
   ansible.builtin.template:
     src: named.conf.{{ item }}.j2
@@ -20,12 +14,18 @@
 - name: dns_zones
   ansible.builtin.template:
     src: zone.j2
-    dest: /var/lib/bind/db.fullbright.df
+    dest: /var/cache/bind/db.fullbright.df
   notify: Reload zone
 
 - name: bind exporters
   ansible.builtin.apt:
     name: prometheus-bind-exporter
+
+- name: bind service
+  ansible.builtin.service:
+    name: bind9
+    state: started
+    enabled: true
 
 - name: bind exporter service
   ansible.builtin.service:
