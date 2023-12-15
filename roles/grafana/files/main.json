@@ -738,7 +738,7 @@
           ]
         },
         {
-          "alias": "8.8.8.8",
+          "alias": "EphemeralShine-1",
           "datasource": {
             "type": "influxdb",
             "uid": "PB54018EEE073B123"
@@ -754,7 +754,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "rtt",
-          "query": "SELECT mean(\"rtt\") FROM \"rtt\" WHERE (\"dst\" = '8.8.8.8') AND $timeFilter GROUP BY time(10s)",
+          "query": "SELECT mean(\"rtt\") FROM \"rtt\" WHERE (\"dst\" = 'EphemeralShine-1') AND $timeFilter GROUP BY time(10s)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
