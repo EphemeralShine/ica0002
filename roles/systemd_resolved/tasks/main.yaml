@@ -8,3 +8,9 @@
   ansible.builtin.template:
     src: resolv.conf.j2
     dest: /etc/resolv.conf
+
+- name: CNAME record
+  ansible.builtin.include_role:
+    name: dns_record
+  vars:
+    dns_record: "ns{{ inventory_hostname | replace('EphemeralShine', '') }}"

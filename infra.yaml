@@ -46,7 +46,7 @@
     hosts: ha
     roles:
      - keepalived
-    tags: k   
+    tags: k
 
   - name: Haproxy
     hosts: ha

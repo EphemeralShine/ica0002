@@ -28,3 +28,4 @@ datasources:
     url: http://influxdb:8086
     database: telegraf
     editable: false
+    

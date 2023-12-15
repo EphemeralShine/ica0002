@@ -1,5 +1,4 @@
-#mysql_host: "{{ groups['db_servers'] | first }}"
-mysql_host: mysql-2
+mysql_host: "{{ groups['db_servers'] | first }}"
 mysql_database: agama
 mysql_user: agama
 node_id: "{{ (ansible_port / 100) | int }}"

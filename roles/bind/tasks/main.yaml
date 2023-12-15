@@ -62,9 +62,3 @@
     name: prometheus-bind-exporter
     state: started
     enabled: true
-
-- name: CNAME record
-  ansible.builtin.include_role:
-    name: dns_record
-  vars:
-    dns_record: "ns{{ inventory_hostname | replace('EphemeralShine', '') }}"

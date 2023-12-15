@@ -5,6 +5,7 @@ zone "{{ domain }}" {
     allow-update { key nsupdate.key; };
 {% else %}
     type secondary;
+    allow-transfer { 127.0.0.1; key transfer.key; };
     {% for vm in groups['dns_masters'] %}
     masters { {{ hostvars[vm]['ansible_default_ipv4']['address'] }}; };
     {% endfor %}
@@ -27,6 +28,7 @@ zone "168.192.in-addr.arpa" {
     allow-update { key nsupdate.key; };
 {% else %}
     type secondary;
+    allow-transfer { 127.0.0.1; key transfer.key; };
     {% for vm in groups['dns_masters'] %}
     masters { {{ hostvars[vm]['ansible_default_ipv4']['address'] }};
     {% endfor %}

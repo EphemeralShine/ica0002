@@ -5,7 +5,7 @@
 - Influx databases
 ## RPO:
 - full backup weekly on saturday at 11p.m. UTC
-- incremental backup daily at 11p.m. UTC
+- incremental backup sunday-friday at 11p.m. UTC
 ## Retention:
 - 56 versions
 - 8 weeks retention

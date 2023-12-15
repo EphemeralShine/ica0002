@@ -8,4 +8,4 @@
     zone: "{{ domain }}"
     type: "CNAME"
     value: "{{ inventory_hostname }}"
-  no_log: true
+  no_log: false
