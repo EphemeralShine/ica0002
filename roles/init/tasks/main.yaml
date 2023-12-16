@@ -49,12 +49,6 @@
     state: started
     enabled: true
 
-- name: Rsyslog config
-  ansible.builtin.copy:
-   src: 10-telegraf.conf
-   dest: /etc/rsyslog.d/10-telegraf.conf
-  notify: Restart rsyslog
-
 - name: Backup restore directory
   ansible.builtin.file:
     state: directory
