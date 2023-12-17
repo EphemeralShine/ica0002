@@ -32,7 +32,7 @@
 - name: Keepalived exporter binary
   ansible.builtin.copy:
     dest: /usr/local/bin/keepalived-exporter
-    src: /tmp/keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter
+    src: /var/lib/keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter
     mode: 0700
     remote_src: yes
   notify: Restart keepalived exporter
