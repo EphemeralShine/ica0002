@@ -27,5 +27,7 @@ datasources:
     isDefault: false
     url: http://influxdb:8086
     database: telegraf
+    jsonData:
+      httpMode: POST
     editable: false
     
