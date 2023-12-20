@@ -13,6 +13,22 @@
    - python3-pymysql
    - prometheus-mysqld-exporter
 
+
+- name: Mysql config
+  ansible.builtin.template:
+    src: override.cnf.j2
+    dest: /etc/mysql/mysql.conf.d/override.cnf
+  notify: Restart mysql
+  
+- name: Mysql services
+  ansible.builtin.service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  loop:
+    - mysql
+    - prometheus-mysqld-exporter
+
 - name: Database creation
   community.mysql.mysql_db:
     name: "{{ mysql_database }}"
@@ -20,12 +36,6 @@
   notify:
     - Reset MySQL source
     - Reset MySQL replica
-
-- name: Mysql config
-  ansible.builtin.template:
-    src: override.cnf.j2
-    dest: /etc/mysql/mysql.conf.d/override.cnf
-  notify: Restart mysql
 
 - name: MySQL agama user
   community.mysql.mysql_user:
@@ -55,15 +65,6 @@
     priv: "*.*:REPLICATION SLAVE"
     login_unix_socket: /var/run/mysqld/mysqld.sock
   notify: Restart mysql
-
-- name: Mysql services
-  ansible.builtin.service:
-    name: "{{ item }}"
-    state: started
-    enabled: true
-  loop:
-    - mysql
-    - prometheus-mysqld-exporter
   
 - name: Backup directory
   ansible.builtin.file:
