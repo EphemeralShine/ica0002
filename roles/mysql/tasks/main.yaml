@@ -5,6 +5,7 @@
     owner: prometheus
     mode: 0600
   no_log: true
+  notify: Restart mysql exporter
 
 - name: Mysql packages
   ansible.builtin.apt:
@@ -44,18 +45,17 @@
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
-  notify: Restart mysql
 
 - name: MySQL exporter user
   community.mysql.mysql_user:
     name: "{{ mysql_exporter_user }}"
     password: "{{ mysql_exporter_password }}"
-    host: "%"
+    host: "localhost"
     priv: 
       '*.*:PROCESS,REPLICATION CLIENT,SELECT'
     login_unix_socket: /var/run/mysqld/mysqld.sock
   no_log: true
-  notify: Restart mysql exporter
+
 
 - name: MySQL replication user
   community.mysql.mysql_user:
@@ -83,13 +83,14 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
   notify: Restart mysql
 
-- name: Mysql exporter config
+- name: Mysql backup user config
   ansible.builtin.template:
     dest: /home/backup/.my.cnf
     src: my.backupcnf.j2
     owner: backup
     mode: 0600
   no_log: true
+
 
 - name: Cron tab for mysql backup
   ansible.builtin.template:
