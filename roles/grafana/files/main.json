@@ -84,7 +84,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {},
@@ -257,7 +257,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {},
@@ -430,7 +430,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {},
@@ -508,7 +508,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {},
@@ -711,7 +711,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "rtt",
-          "query": "SELECT mean(\"rtt\") FROM \"rtt\" WHERE (\"dst\" = 'github.com') AND $timeFilter GROUP BY time(10s)",
+          "query": "SELECT mean(\"rtt\") FROM \"autogen\".\"rtt\" WHERE (\"dst\" = 'github.com') AND $timeFilter GROUP BY time(10s)",
           "rawQuery": true,
           "refId": "C",
           "resultFormat": "time_series",
@@ -754,7 +754,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "rtt",
-          "query": "SELECT mean(\"rtt\") FROM \"rtt\" WHERE (\"dst\" = 'EphemeralShine-1') AND $timeFilter GROUP BY time(10s)",
+          "query": "SELECT mean(\"rtt\") FROM \"autogen\".\"rtt\" WHERE (\"dst\" = 'EphemeralShine-1') AND $timeFilter GROUP BY time(10s)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -797,7 +797,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "rtt",
-          "query": "SELECT mean(\"rtt\") FROM \"rtt\" WHERE (\"dst\" = 'itcollege.ee') AND $timeFilter GROUP BY time(10s)",
+          "query": "SELECT mean(\"rtt\") FROM \"autogen\".\"rtt\" WHERE (\"dst\" = 'itcollege.ee') AND $timeFilter GROUP BY time(10s)",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "time_series",
@@ -840,7 +840,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "rtt",
-          "query": "SELECT mean(\"rtt\") FROM \"rtt\" WHERE (\"dst\" = 'EphemeralShine-2') AND $timeFilter GROUP BY time(10s)",
+          "query": "SELECT mean(\"rtt\") FROM \"autogen\".\"rtt\" WHERE (\"dst\" = 'EphemeralShine-2') AND $timeFilter GROUP BY time(10s)",
           "rawQuery": true,
           "refId": "D",
           "resultFormat": "time_series",
@@ -1120,7 +1120,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {},
@@ -1201,7 +1201,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {},
@@ -1218,7 +1218,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 38,
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
