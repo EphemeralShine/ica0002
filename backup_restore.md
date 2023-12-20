@@ -4,6 +4,8 @@ ansible-playbook infra.yaml
 ```
 # Restore MySQL data from the backup:
 
+- On machine "EphemeralShine-1" open a terminal
+
 - Restore backups from remote server
 ```
 sudo -u backup duplicity --no-encryption restore rsync://EphemeralShine@backup/./mysql /home/backup/restore/mysql
@@ -30,6 +32,9 @@ mysql agama < /home/backup/restore/mysql/agama.sql
 sudo rm -rf /home/backup/restore/mysql
 ```
 # Restore InfluxDB data from the backup:
+
+- On machine "EphemeralShine-3" open a terminal
+
 - Restore backups from remote server
 ```
 sudo -u backup duplicity --no-encryption restore rsync://EphemeralShine@backup/./influxdb /home/backup/restore/influxdb
