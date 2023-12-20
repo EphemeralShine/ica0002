@@ -1,4 +1,4 @@
-E 18 dets  2023 00:15:41 EET
+K 20 dets  2023 13:58:00 EET
 + hostname
 fineshine-VirtualBox
 + ansible-playbook infra.yaml --diff
@@ -6,32 +6,23 @@ fineshine-VirtualBox
 PLAY [Initial setup] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [EphemeralShine-3]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-3]
 ok: [EphemeralShine-2]
 
 TASK [init : Update APT cache] *************************************************
 changed: [EphemeralShine-2]
-changed: [EphemeralShine-1]
 changed: [EphemeralShine-3]
+changed: [EphemeralShine-1]
 
 TASK [init : Backup user] ******************************************************
+changed: [EphemeralShine-1]
 changed: [EphemeralShine-2]
 changed: [EphemeralShine-3]
-changed: [EphemeralShine-1]
 
 TASK [init : Backup ssh keys] **************************************************
 --- before
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpvqpql7fq/known_hosts.j2
-@@ -0,0 +1,3 @@
-+192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
-+backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
-+backup.fullbright.df ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
-\ No newline at end of file
-
-changed: [EphemeralShine-3]
---- before
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmporj0nvpu/known_hosts.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmp43jpvin6/known_hosts.j2
 @@ -0,0 +1,3 @@
 +192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 +backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
@@ -40,7 +31,7 @@ changed: [EphemeralShine-3]
 
 changed: [EphemeralShine-2]
 --- before
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmplnxi28z3/known_hosts.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpm2_54z0u/known_hosts.j2
 @@ -0,0 +1,3 @@
 +192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 +backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
@@ -48,6 +39,15 @@ changed: [EphemeralShine-2]
 \ No newline at end of file
 
 changed: [EphemeralShine-1]
+--- before
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmp07egs3i_/known_hosts.j2
+@@ -0,0 +1,3 @@
++192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
++backup.fullbright.df ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
+\ No newline at end of file
+
+changed: [EphemeralShine-3]
 
 TASK [init : Prometheus node exporters, duplicity and certs] *******************
 The following additional packages will be installed:
@@ -68,25 +68,6 @@ The following NEW packages will be installed:
 The following packages will be upgraded:
   ca-certificates
 1 upgraded, 16 newly installed, 0 to remove and 264 not upgraded.
-changed: [EphemeralShine-2]
-The following additional packages will be installed:
-  libio-pty-perl libipc-run-perl librsync2 libtime-duration-perl
-  libtimedate-perl moreutils prometheus-node-exporter-collectors
-  python3-bcrypt python3-fasteners python3-future python3-lockfile
-  python3-monotonic python3-paramiko smartmontools
-Suggested packages:
-  python3-boto ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2
-  python-future-doc python-lockfile-doc python3-gssapi gsmartcontrol
-  smart-notifier mailx | mailutils
-The following NEW packages will be installed:
-  duplicity libio-pty-perl libipc-run-perl librsync2 libtime-duration-perl
-  libtimedate-perl moreutils prometheus-node-exporter
-  prometheus-node-exporter-collectors python3-bcrypt python3-fasteners
-  python3-future python3-lockfile python3-monotonic python3-paramiko
-  smartmontools
-The following packages will be upgraded:
-  ca-certificates
-1 upgraded, 16 newly installed, 0 to remove and 264 not upgraded.
 changed: [EphemeralShine-3]
 The following additional packages will be installed:
   libio-pty-perl libipc-run-perl librsync2 libtime-duration-perl
@@ -107,11 +88,30 @@ The following packages will be upgraded:
   ca-certificates
 1 upgraded, 16 newly installed, 0 to remove and 264 not upgraded.
 changed: [EphemeralShine-1]
+The following additional packages will be installed:
+  libio-pty-perl libipc-run-perl librsync2 libtime-duration-perl
+  libtimedate-perl moreutils prometheus-node-exporter-collectors
+  python3-bcrypt python3-fasteners python3-future python3-lockfile
+  python3-monotonic python3-paramiko smartmontools
+Suggested packages:
+  python3-boto ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2
+  python-future-doc python-lockfile-doc python3-gssapi gsmartcontrol
+  smart-notifier mailx | mailutils
+The following NEW packages will be installed:
+  duplicity libio-pty-perl libipc-run-perl librsync2 libtime-duration-perl
+  libtimedate-perl moreutils prometheus-node-exporter
+  prometheus-node-exporter-collectors python3-bcrypt python3-fasteners
+  python3-future python3-lockfile python3-monotonic python3-paramiko
+  smartmontools
+The following packages will be upgraded:
+  ca-certificates
+1 upgraded, 16 newly installed, 0 to remove and 264 not upgraded.
+changed: [EphemeralShine-2]
 
 TASK [init : prometheus-node-exporter service] *********************************
+ok: [EphemeralShine-3]
 ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
-ok: [EphemeralShine-3]
 
 TASK [init : Backup restore directory] *****************************************
 --- before
@@ -127,20 +127,6 @@ TASK [init : Backup restore directory] *****************************************
 +    "state": "directory"
  }
 
-changed: [EphemeralShine-2]
---- before
-+++ after
-@@ -1,6 +1,6 @@
- {
--    "group": 0,
--    "owner": 0,
-+    "group": 34,
-+    "owner": 34,
-     "path": "/home/backup/restore",
--    "state": "absent"
-+    "state": "directory"
- }
-
 changed: [EphemeralShine-1]
 --- before
 +++ after
@@ -156,13 +142,27 @@ changed: [EphemeralShine-1]
  }
 
 changed: [EphemeralShine-3]
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "group": 0,
+-    "owner": 0,
++    "group": 34,
++    "owner": 34,
+     "path": "/home/backup/restore",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [EphemeralShine-2]
 
 PLAY [DNS server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [EphemeralShine-3]
 ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-3]
 
 TASK [bind : bind packages] ****************************************************
 The following additional packages will be installed:
@@ -174,16 +174,6 @@ The following NEW packages will be installed:
 The following packages will be upgraded:
   bind9-dnsutils bind9-libs
 2 upgraded, 5 newly installed, 0 to remove and 262 not upgraded.
-changed: [EphemeralShine-3]
-The following additional packages will be installed:
-  bind9-dnsutils bind9-libs bind9-utils dns-root-data python3-ply
-Suggested packages:
-  bind-doc resolvconf python-ply-doc
-The following NEW packages will be installed:
-  bind9 bind9-utils dns-root-data python3-dnspython python3-ply
-The following packages will be upgraded:
-  bind9-dnsutils bind9-libs
-2 upgraded, 5 newly installed, 0 to remove and 262 not upgraded.
 changed: [EphemeralShine-2]
 The following additional packages will be installed:
   bind9-dnsutils bind9-libs bind9-utils dns-root-data python3-ply
@@ -195,23 +185,33 @@ The following packages will be upgraded:
   bind9-dnsutils bind9-libs
 2 upgraded, 5 newly installed, 0 to remove and 262 not upgraded.
 changed: [EphemeralShine-1]
+The following additional packages will be installed:
+  bind9-dnsutils bind9-libs bind9-utils dns-root-data python3-ply
+Suggested packages:
+  bind-doc resolvconf python-ply-doc
+The following NEW packages will be installed:
+  bind9 bind9-utils dns-root-data python3-dnspython python3-ply
+The following packages will be upgraded:
+  bind9-dnsutils bind9-libs
+2 upgraded, 5 newly installed, 0 to remove and 262 not upgraded.
+changed: [EphemeralShine-3]
 
 TASK [bind : dns named confs] **************************************************
+changed: [EphemeralShine-3] => (item=None)
 changed: [EphemeralShine-2] => (item=None)
 changed: [EphemeralShine-1] => (item=None)
 changed: [EphemeralShine-3] => (item=None)
+changed: [EphemeralShine-3]
 changed: [EphemeralShine-2] => (item=None)
 changed: [EphemeralShine-2]
 changed: [EphemeralShine-1] => (item=None)
-changed: [EphemeralShine-3] => (item=None)
 changed: [EphemeralShine-1]
-changed: [EphemeralShine-3]
 
 TASK [bind : Dns zone] *********************************************************
 skipping: [EphemeralShine-1]
 skipping: [EphemeralShine-2]
 --- before
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpycb47b5d/zone.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpm817b8cg/zone.j2
 @@ -0,0 +1,16 @@
 +$TTL	604800
 +fullbright.df.	IN	SOA	vm2.fullbright.df. danka.fullbright.df. (
@@ -225,9 +225,9 @@ skipping: [EphemeralShine-2]
 +fullbright.df.	IN	NS	EphemeralShine-1
 +fullbright.df.	IN	NS	EphemeralShine-2
 +
-+EphemeralShine-3	IN	A	192.168.42.184
-+EphemeralShine-1	IN	A	192.168.42.31
-+EphemeralShine-2	IN	A	192.168.42.69
++EphemeralShine-3	IN	A	192.168.43.15
++EphemeralShine-1	IN	A	192.168.43.162
++EphemeralShine-2	IN	A	192.168.43.48
 +
 
 changed: [EphemeralShine-3]
@@ -236,7 +236,7 @@ TASK [bind : Dns reverse zone] *************************************************
 skipping: [EphemeralShine-1]
 skipping: [EphemeralShine-2]
 --- before
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmp0zjyffj8/zone.rev.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpbds_zezs/zone.rev.j2
 @@ -0,0 +1,15 @@
 +$TTL	604800
 +168.192.in-addr.arpa.	IN	SOA	vm2.fullbright.df. danka.fullbright.df. (
@@ -250,18 +250,18 @@ skipping: [EphemeralShine-2]
 +168.192.in-addr.arpa.	IN	NS	EphemeralShine-1.fullbright.df.
 +168.192.in-addr.arpa.	IN	NS	EphemeralShine-2.fullbright.df.
 +
-+184.42	IN	PTR	EphemeralShine-3.fullbright.df.
-+31.42	IN	PTR	EphemeralShine-1.fullbright.df.
-+69.42	IN	PTR	EphemeralShine-2.fullbright.df.
++15.43	IN	PTR	EphemeralShine-3.fullbright.df.
++162.43	IN	PTR	EphemeralShine-1.fullbright.df.
++48.43	IN	PTR	EphemeralShine-2.fullbright.df.
 
 changed: [EphemeralShine-3]
 
 TASK [bind : Run handlers] *****************************************************
 
 RUNNING HANDLER [bind : Restart bind] ******************************************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
 changed: [EphemeralShine-3]
+changed: [EphemeralShine-2]
 
 RUNNING HANDLER [bind : Reload zone] *******************************************
 changed: [EphemeralShine-3]
@@ -275,15 +275,15 @@ TASK [bind : bind exporters] ***************************************************
 The following NEW packages will be installed:
   prometheus-bind-exporter
 0 upgraded, 1 newly installed, 0 to remove and 262 not upgraded.
+changed: [EphemeralShine-2]
+The following NEW packages will be installed:
+  prometheus-bind-exporter
+0 upgraded, 1 newly installed, 0 to remove and 262 not upgraded.
 changed: [EphemeralShine-1]
 The following NEW packages will be installed:
   prometheus-bind-exporter
 0 upgraded, 1 newly installed, 0 to remove and 262 not upgraded.
 changed: [EphemeralShine-3]
-The following NEW packages will be installed:
-  prometheus-bind-exporter
-0 upgraded, 1 newly installed, 0 to remove and 262 not upgraded.
-changed: [EphemeralShine-2]
 
 TASK [bind : bind service] *****************************************************
 ok: [EphemeralShine-3]
@@ -299,17 +299,17 @@ PLAY [Systemd resolved] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [EphemeralShine-2]
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
+ok: [EphemeralShine-1]
 
 TASK [systemd_resolved : Stop systemd-resolved] ********************************
-changed: [EphemeralShine-1]
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-3]
+changed: [EphemeralShine-2]
+changed: [EphemeralShine-1]
 
 TASK [systemd_resolved : Resolve configuration] ********************************
 --- before: /etc/resolv.conf
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpjxujrp51/resolv.conf.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpi1tpa2hm/resolv.conf.j2
 @@ -1,19 +1,3 @@
 -# This file is managed by man:systemd-resolved(8). Do not edit.
 -#
@@ -330,13 +330,13 @@ TASK [systemd_resolved : Resolve configuration] ********************************
 -nameserver 127.0.0.53
 -options edns0 trust-ad
 -search openstacklocal
-+nameserver 192.168.42.31
-+nameserver 192.168.42.69
++nameserver 192.168.43.162
++nameserver 192.168.43.48
 +search fullbright.df
 
 changed: [EphemeralShine-2]
 --- before: /etc/resolv.conf
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmp445bl3t7/resolv.conf.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpevexr_jl/resolv.conf.j2
 @@ -1,19 +1,3 @@
 -# This file is managed by man:systemd-resolved(8). Do not edit.
 -#
@@ -357,44 +357,44 @@ changed: [EphemeralShine-2]
 -nameserver 127.0.0.53
 -options edns0 trust-ad
 -search openstacklocal
-+nameserver 192.168.42.31
-+nameserver 192.168.42.69
-+search fullbright.df
-
-changed: [EphemeralShine-1]
---- before: /etc/resolv.conf
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpvq6w3ot4/resolv.conf.j2
-@@ -1,19 +1,3 @@
--# This file is managed by man:systemd-resolved(8). Do not edit.
--#
--# This is a dynamic resolv.conf file for connecting local clients to the
--# internal DNS stub resolver of systemd-resolved. This file lists all
--# configured search domains.
--#
--# Run "resolvectl status" to see details about the uplink DNS servers
--# currently in use.
--#
--# Third party programs must not access this file directly, but only through the
--# symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,
--# replace this symlink by a static file or a different symlink.
--#
--# See man:systemd-resolved.service(8) for details about the supported modes of
--# operation for /etc/resolv.conf.
--
--nameserver 127.0.0.53
--options edns0 trust-ad
--search openstacklocal
-+nameserver 192.168.42.31
-+nameserver 192.168.42.69
++nameserver 192.168.43.162
++nameserver 192.168.43.48
 +search fullbright.df
 
 changed: [EphemeralShine-3]
+--- before: /etc/resolv.conf
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmp0fp_k9ra/resolv.conf.j2
+@@ -1,19 +1,3 @@
+-# This file is managed by man:systemd-resolved(8). Do not edit.
+-#
+-# This is a dynamic resolv.conf file for connecting local clients to the
+-# internal DNS stub resolver of systemd-resolved. This file lists all
+-# configured search domains.
+-#
+-# Run "resolvectl status" to see details about the uplink DNS servers
+-# currently in use.
+-#
+-# Third party programs must not access this file directly, but only through the
+-# symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,
+-# replace this symlink by a static file or a different symlink.
+-#
+-# See man:systemd-resolved.service(8) for details about the supported modes of
+-# operation for /etc/resolv.conf.
+-
+-nameserver 127.0.0.53
+-options edns0 trust-ad
+-search openstacklocal
++nameserver 192.168.43.162
++nameserver 192.168.43.48
++search fullbright.df
+
+changed: [EphemeralShine-1]
 
 TASK [CNAME record] ************************************************************
 
 TASK [dns_record : Create CNAME record for local machine] **********************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 changed: [EphemeralShine-3]
 
 TASK [systemd_resolved : Rsyslog config] ***************************************
@@ -408,6 +408,17 @@ TASK [systemd_resolved : Rsyslog config] ***************************************
 +
 +*.* @influxdb:6514;RSYSLOG_SyslogProtocol23Format
 
+changed: [EphemeralShine-1]
+--- before
++++ after: /home/fineshine/ica0002/roles/systemd_resolved/files/10-telegraf.conf
+@@ -0,0 +1,6 @@
++$ActionQueueType LinkedList # use asynchronous processing
++$ActionQueueFileName srvrfwd # set file name, also enables disk mod
++$ActionResumeRetryCount -1 # infinite retries on insert failure
++$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
++
++*.* @influxdb:6514;RSYSLOG_SyslogProtocol23Format
+
 changed: [EphemeralShine-2]
 --- before
 +++ after: /home/fineshine/ica0002/roles/systemd_resolved/files/10-telegraf.conf
@@ -420,22 +431,11 @@ changed: [EphemeralShine-2]
 +*.* @influxdb:6514;RSYSLOG_SyslogProtocol23Format
 
 changed: [EphemeralShine-3]
---- before
-+++ after: /home/fineshine/ica0002/roles/systemd_resolved/files/10-telegraf.conf
-@@ -0,0 +1,6 @@
-+$ActionQueueType LinkedList # use asynchronous processing
-+$ActionQueueFileName srvrfwd # set file name, also enables disk mod
-+$ActionResumeRetryCount -1 # infinite retries on insert failure
-+$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
-+
-+*.* @influxdb:6514;RSYSLOG_SyslogProtocol23Format
-
-changed: [EphemeralShine-1]
 
 RUNNING HANDLER [systemd_resolved : Restart rsyslog] ***************************
 changed: [EphemeralShine-2]
-changed: [EphemeralShine-3]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-3]
 
 PLAY [Database server] *********************************************************
 
@@ -495,25 +495,25 @@ changed: [EphemeralShine-2]
 
 TASK [mysql : Mysql config] ****************************************************
 --- before
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpii98992h/override.cnf.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmp_hxdoary/override.cnf.j2
 @@ -0,0 +1,6 @@
 +[mysqld]
 +bind-address = 0.0.0.0
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 69
++server-id = 304
 
 changed: [EphemeralShine-2]
 --- before
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpx85kvvl9/override.cnf.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpi08_lhar/override.cnf.j2
 @@ -0,0 +1,6 @@
 +[mysqld]
 +bind-address = 0.0.0.0
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 31
++server-id = 418
 
 changed: [EphemeralShine-1]
 
@@ -522,18 +522,18 @@ changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
 
 TASK [mysql : MySQL exporter user] *********************************************
-changed: [EphemeralShine-1]
 changed: [EphemeralShine-2]
+changed: [EphemeralShine-1]
 
 TASK [mysql : MySQL replication user] ******************************************
-changed: [EphemeralShine-1]
 changed: [EphemeralShine-2]
+changed: [EphemeralShine-1]
 
 TASK [mysql : Mysql services] **************************************************
 ok: [EphemeralShine-1] => (item=mysql)
 ok: [EphemeralShine-2] => (item=mysql)
-ok: [EphemeralShine-2] => (item=prometheus-mysqld-exporter)
 ok: [EphemeralShine-1] => (item=prometheus-mysqld-exporter)
+ok: [EphemeralShine-2] => (item=prometheus-mysqld-exporter)
 
 TASK [mysql : Backup directory] ************************************************
 --- before
@@ -566,28 +566,28 @@ changed: [EphemeralShine-1]
 changed: [EphemeralShine-2]
 
 TASK [mysql : Backup user] *****************************************************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 
 TASK [mysql : Mysql exporter config] *******************************************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 
 TASK [mysql : Cron tab for mysql backup] ***************************************
 --- before
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpx29p62d8/mysql-backup.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpv7vqz4hx/mysql-backup.j2
+@@ -0,0 +1 @@
++
+
+changed: [EphemeralShine-1]
+--- before
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpem5n_9gw/mysql-backup.j2
 @@ -0,0 +1,3 @@
 +55 23 * * *  backup  rm -rf /home/backup/mysql/*; mysqldump agama > /home/backup/mysql/agama.sql
 +56 23 * * 6  backup  duplicity --no-encryption full /home/backup/mysql/ rsync://EphemeralShine@backup/mysql
 +56 23 * * 0-5  backup  duplicity --no-encryption incremental /home/backup/mysql/ rsync://EphemeralShine@backup/mysql
 
 changed: [EphemeralShine-2]
---- before
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpeije0k6x/mysql-backup.j2
-@@ -0,0 +1 @@
-+
-
-changed: [EphemeralShine-1]
 
 TASK [mysql : Slave metrics] ***************************************************
 --- before: /etc/default/prometheus-mysqld-exporter
@@ -715,7 +715,7 @@ TASK [mysql : Slave metrics] ***************************************************
 -#       "logger:syslog?appname=bob&local=7" or "logger:stdout?json=true"
 +ARGS="--collect.slave_status"
 
-changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 --- before: /etc/default/prometheus-mysqld-exporter
 +++ after: /home/fineshine/ica0002/roles/mysql/files/prometheus-mysqld-exporter
 @@ -1,120 +1 @@
@@ -841,7 +841,7 @@ changed: [EphemeralShine-1]
 -#       "logger:syslog?appname=bob&local=7" or "logger:stdout?json=true"
 +ARGS="--collect.slave_status"
 
-changed: [EphemeralShine-2]
+changed: [EphemeralShine-1]
 
 TASK [mysql : MySQL replica read-only mode] ************************************
 changed: [EphemeralShine-1]
@@ -854,8 +854,8 @@ changed: [EphemeralShine-1]
 changed: [EphemeralShine-2]
 
 RUNNING HANDLER [mysql : Restart mysql] ****************************************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 
 RUNNING HANDLER [mysql : Restart mysql exporter] *******************************
 changed: [EphemeralShine-1]
@@ -1662,16 +1662,26 @@ changed: [EphemeralShine-1] => (item=https://raw.githubusercontent.com/hudolejev
 changed: [EphemeralShine-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
 
 TASK [agama : Docker image] ****************************************************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 
 TASK [agama : Agama  container] ************************************************
-changed: [EphemeralShine-1] => (item=None)
 changed: [EphemeralShine-2] => (item=None)
 changed: [EphemeralShine-1] => (item=None)
-changed: [EphemeralShine-1]
 changed: [EphemeralShine-2] => (item=None)
 changed: [EphemeralShine-2]
+changed: [EphemeralShine-1] => (item=None)
+changed: [EphemeralShine-1]
+
+TASK [agama : containers named "agama" + integer] ******************************
+ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
+
+TASK [agama : Remove containers not in agama_containers list] ******************
+skipping: [EphemeralShine-1] => (item=/agama2) 
+skipping: [EphemeralShine-1] => (item=/agama1) 
+skipping: [EphemeralShine-2] => (item=/agama2) 
+skipping: [EphemeralShine-2] => (item=/agama1) 
 
 TASK [CNAME record] ************************************************************
 
@@ -1710,12 +1720,12 @@ The following NEW packages will be installed:
 changed: [EphemeralShine-2]
 
 TASK [nginx : Nginx service] ***************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [nginx : Config file] *****************************************************
 --- before: /etc/nginx/sites-enabled/default
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmp_wu6nonq/default.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpnxse_61a/default.j2
 @@ -1,91 +1,17 @@
 -##
 -# You should look at the following URL's in order to grasp a solid understanding
@@ -1822,7 +1832,7 @@ TASK [nginx : Config file] *****************************************************
 
 changed: [EphemeralShine-2]
 --- before: /etc/nginx/sites-enabled/default
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpvykal3lb/default.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmp4v1zobzk/default.j2
 @@ -1,91 +1,17 @@
 -##
 -# You should look at the following URL's in order to grasp a solid understanding
@@ -1932,12 +1942,12 @@ changed: [EphemeralShine-1]
 TASK [nginx : Nginx services] **************************************************
 ok: [EphemeralShine-1] => (item=nginx)
 ok: [EphemeralShine-2] => (item=nginx)
-changed: [EphemeralShine-1] => (item=prometheus-nginx-exporter)
 changed: [EphemeralShine-2] => (item=prometheus-nginx-exporter)
+changed: [EphemeralShine-1] => (item=prometheus-nginx-exporter)
 
 RUNNING HANDLER [nginx : Restart nginx] ****************************************
-changed: [EphemeralShine-1]
 changed: [EphemeralShine-2]
+changed: [EphemeralShine-1]
 
 RUNNING HANDLER [nginx : Restart nginx exporter] *******************************
 changed: [EphemeralShine-2]
@@ -1972,12 +1982,12 @@ The following NEW packages will be installed:
 changed: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived script user] *************************************
-changed: [EphemeralShine-1]
 changed: [EphemeralShine-2]
+changed: [EphemeralShine-1]
 
 TASK [keepalived : Keepalived Config] ******************************************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived script file] *************************************
 --- before
@@ -2000,8 +2010,8 @@ changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
 
 TASK [keepalived : Keepalived exporter binary] *********************************
-changed: [EphemeralShine-1]
 changed: [EphemeralShine-2]
+changed: [EphemeralShine-1]
 
 TASK [keepalived : Keepalived exporter service config] *************************
 --- before
@@ -2038,20 +2048,20 @@ changed: [EphemeralShine-1]
 changed: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived service] *****************************************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived exporter service] ********************************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 
 RUNNING HANDLER [keepalived : Restart keepalived] ******************************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 
 RUNNING HANDLER [keepalived : Reload systemd] **********************************
-changed: [EphemeralShine-2]
 changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 
 RUNNING HANDLER [keepalived : Restart keepalived exporter] *********************
 changed: [EphemeralShine-1]
@@ -2060,8 +2070,8 @@ changed: [EphemeralShine-2]
 PLAY [Haproxy] *****************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [haproxy : Haproxy packages] **********************************************
 The following additional packages will be installed:
@@ -2071,7 +2081,7 @@ Suggested packages:
 The following NEW packages will be installed:
   haproxy liblua5.3-0 prometheus-haproxy-exporter
 0 upgraded, 3 newly installed, 0 to remove and 262 not upgraded.
-changed: [EphemeralShine-1]
+changed: [EphemeralShine-2]
 The following additional packages will be installed:
   liblua5.3-0
 Suggested packages:
@@ -2079,11 +2089,11 @@ Suggested packages:
 The following NEW packages will be installed:
   haproxy liblua5.3-0 prometheus-haproxy-exporter
 0 upgraded, 3 newly installed, 0 to remove and 262 not upgraded.
-changed: [EphemeralShine-2]
+changed: [EphemeralShine-1]
 
 TASK [haproxy : Haproxy Config] ************************************************
 --- before: /etc/haproxy/haproxy.cfg
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpe6b32iwx/haproxy.cfg.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmp58z3ifuo/haproxy.cfg.j2
 @@ -7,15 +7,6 @@
  	user haproxy
  	group haproxy
@@ -2120,7 +2130,7 @@ TASK [haproxy : Haproxy Config] ************************************************
 
 changed: [EphemeralShine-1]
 --- before: /etc/haproxy/haproxy.cfg
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpdncmh4qy/haproxy.cfg.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmp_ryxdgeo/haproxy.cfg.j2
 @@ -7,15 +7,6 @@
  	user haproxy
  	group haproxy
@@ -2246,8 +2256,8 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [haproxy : Haproxy exporter service] **************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [CNAME record] ************************************************************
 
@@ -2289,7 +2299,7 @@ ok: [EphemeralShine-3]
 
 TASK [nginx : Config file] *****************************************************
 --- before: /etc/nginx/sites-enabled/default
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpr3u920i9/default.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpsfso62vp/default.j2
 @@ -1,91 +1,25 @@
 -##
 -# You should look at the following URL's in order to grasp a solid understanding
@@ -2431,7 +2441,7 @@ ok: [EphemeralShine-3]
 
 TASK [prometheus : Prometheus job] *********************************************
 --- before: /etc/prometheus/prometheus.yml
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmprd9m2h0t/prometheus.yml.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmpkpdvwg3s/prometheus.yml.j2
 @@ -1,25 +1,7 @@
 -# Sample config for Prometheus.
 -
@@ -2521,7 +2531,7 @@ changed: [EphemeralShine-3]
 
 TASK [prometheus : Prometheus ARGS] ********************************************
 --- before: /etc/default/prometheus
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpq868d25d/prometheus.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmp731wayta/prometheus.j2
 @@ -1,57 +1 @@
 -# Set the command-line arguments to pass to the server.
 -ARGS=""
@@ -2580,7 +2590,7 @@ TASK [prometheus : Prometheus ARGS] ********************************************
 -#                             Maximum number of queries executed concurrently.
 -#  --log.level=info           Only log messages with the given severity or
 -#                             above. One of: [debug, info, warn, error]
-+ARGS="--web.external-url=http://prometheus:18480/prometheus"
++ARGS="--web.external-url=http://prometheus:27180/prometheus"
 
 changed: [EphemeralShine-3]
 
@@ -5645,7 +5655,7 @@ changed: [EphemeralShine-3]
 
 TASK [pinger : Pinger config] **************************************************
 --- before
-+++ after: /home/fineshine/.ansible/tmp/ansible-local-2979y3fudimb/tmpm6edm2ez/pinger.conf.j2
++++ after: /home/fineshine/.ansible/tmp/ansible-local-16285s3eiwxie/tmp9utjt5qo/pinger.conf.j2
 @@ -0,0 +1,3 @@
 +database_url=http://influxdb:8086
 +database_name=latency
@@ -5663,8 +5673,8 @@ RUNNING HANDLER [pinger : Restart pinger] **************************************
 changed: [EphemeralShine-3]
 
 PLAY RECAP *********************************************************************
-EphemeralShine-1           : ok=75   changed=60   unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
-EphemeralShine-2           : ok=75   changed=60   unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+EphemeralShine-1           : ok=76   changed=60   unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+EphemeralShine-2           : ok=76   changed=60   unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
 EphemeralShine-3           : ok=78   changed=65   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 + ansible-playbook infra.yaml --diff
@@ -5673,61 +5683,61 @@ PLAY [Initial setup] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [EphemeralShine-3]
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [init : Update APT cache] *************************************************
 ok: [EphemeralShine-2]
-ok: [EphemeralShine-3]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-3]
 
 TASK [init : Backup user] ******************************************************
-ok: [EphemeralShine-3]
 ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-3]
 
 TASK [init : Backup ssh keys] **************************************************
-ok: [EphemeralShine-3]
 ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-3]
 
 TASK [init : Prometheus node exporters, duplicity and certs] *******************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
+ok: [EphemeralShine-2]
 
 TASK [init : prometheus-node-exporter service] *********************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
+ok: [EphemeralShine-2]
 
 TASK [init : Backup restore directory] *****************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 ok: [EphemeralShine-3]
 
 PLAY [DNS server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [EphemeralShine-2]
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
+ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [bind : bind packages] ****************************************************
 ok: [EphemeralShine-1]
-ok: [EphemeralShine-3]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-3]
 
 TASK [bind : dns named confs] **************************************************
-ok: [EphemeralShine-1] => (item=None)
 ok: [EphemeralShine-2] => (item=None)
+ok: [EphemeralShine-1] => (item=None)
 ok: [EphemeralShine-3] => (item=None)
+ok: [EphemeralShine-2] => (item=None)
+ok: [EphemeralShine-2]
 ok: [EphemeralShine-1] => (item=None)
 ok: [EphemeralShine-1]
 ok: [EphemeralShine-3] => (item=None)
-ok: [EphemeralShine-2] => (item=None)
 ok: [EphemeralShine-3]
-ok: [EphemeralShine-2]
 
 TASK [bind : Dns zone] *********************************************************
 skipping: [EphemeralShine-1]
@@ -5747,9 +5757,9 @@ skipping: [EphemeralShine-2]
 ok: [EphemeralShine-3]
 
 TASK [bind : bind exporters] ***************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
+ok: [EphemeralShine-2]
 
 TASK [bind : bind service] *****************************************************
 ok: [EphemeralShine-1]
@@ -5765,24 +5775,24 @@ PLAY [Systemd resolved] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [EphemeralShine-1]
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-3]
+ok: [EphemeralShine-2]
 
 TASK [systemd_resolved : Stop systemd-resolved] ********************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
 
 TASK [systemd_resolved : Resolve configuration] ********************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
 
 TASK [CNAME record] ************************************************************
 
 TASK [dns_record : Create CNAME record for local machine] **********************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 ok: [EphemeralShine-3]
 
 TASK [systemd_resolved : Rsyslog config] ***************************************
@@ -5797,8 +5807,8 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [mysql : Mysql exporter config] *******************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [mysql : Mysql packages] **************************************************
 ok: [EphemeralShine-1]
@@ -5825,10 +5835,10 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [mysql : Mysql services] **************************************************
-ok: [EphemeralShine-2] => (item=mysql)
 ok: [EphemeralShine-1] => (item=mysql)
-ok: [EphemeralShine-2] => (item=prometheus-mysqld-exporter)
+ok: [EphemeralShine-2] => (item=mysql)
 ok: [EphemeralShine-1] => (item=prometheus-mysqld-exporter)
+ok: [EphemeralShine-2] => (item=prometheus-mysqld-exporter)
 
 TASK [mysql : Backup directory] ************************************************
 ok: [EphemeralShine-1]
@@ -5843,8 +5853,8 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [mysql : Cron tab for mysql backup] ***************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [mysql : Slave metrics] ***************************************************
 ok: [EphemeralShine-1]
@@ -5857,8 +5867,8 @@ ok: [EphemeralShine-2]
 TASK [CNAME record] ************************************************************
 
 TASK [dns_record : Create CNAME record for local machine] **********************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 PLAY [InfluxDB] ****************************************************************
 
@@ -5918,52 +5928,62 @@ ok: [EphemeralShine-3]
 PLAY [Web server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [docker : Docker packages] ************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [docker : Docker service] *************************************************
 ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [agama : Agama directory] *************************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [agama : Agama application] ***********************************************
-ok: [EphemeralShine-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
 ok: [EphemeralShine-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
-ok: [EphemeralShine-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
+ok: [EphemeralShine-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
 ok: [EphemeralShine-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
+ok: [EphemeralShine-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
 
 TASK [agama : Docker image] ****************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [agama : Agama  container] ************************************************
-ok: [EphemeralShine-2] => (item=None)
 ok: [EphemeralShine-1] => (item=None)
+ok: [EphemeralShine-2] => (item=None)
 ok: [EphemeralShine-2] => (item=None)
 ok: [EphemeralShine-2]
 ok: [EphemeralShine-1] => (item=None)
 ok: [EphemeralShine-1]
+
+TASK [agama : containers named "agama" + integer] ******************************
+ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
+
+TASK [agama : Remove containers not in agama_containers list] ******************
+skipping: [EphemeralShine-1] => (item=/agama2) 
+skipping: [EphemeralShine-1] => (item=/agama1) 
+skipping: [EphemeralShine-2] => (item=/agama2) 
+skipping: [EphemeralShine-2] => (item=/agama1) 
 
 TASK [CNAME record] ************************************************************
 
 TASK [dns_record : Create CNAME record for local machine] **********************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [nginx : Nginx packages] **************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [nginx : Nginx service] ***************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [nginx : Config file] *****************************************************
 ok: [EphemeralShine-1]
@@ -5972,14 +5992,14 @@ ok: [EphemeralShine-2]
 TASK [nginx : Nginx services] **************************************************
 ok: [EphemeralShine-1] => (item=nginx)
 ok: [EphemeralShine-2] => (item=nginx)
-ok: [EphemeralShine-2] => (item=prometheus-nginx-exporter)
 ok: [EphemeralShine-1] => (item=prometheus-nginx-exporter)
+ok: [EphemeralShine-2] => (item=prometheus-nginx-exporter)
 
 PLAY [Keepalived] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived packages] ****************************************
 ok: [EphemeralShine-1]
@@ -5990,24 +6010,24 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived Config] ******************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived script file] *************************************
 ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
 
 TASK [keepalived : Keepalived exporter archive] ********************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived exporter binary] *********************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [keepalived : Keepalived exporter service config] *************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived service] *****************************************
 ok: [EphemeralShine-1]
@@ -6024,8 +6044,8 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [haproxy : Haproxy packages] **********************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [haproxy : Haproxy Config] ************************************************
 ok: [EphemeralShine-1]
@@ -6036,8 +6056,8 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [haproxy : Haproxy service] ***********************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [haproxy : Haproxy exporter service] **************************************
 ok: [EphemeralShine-1]
@@ -6148,24 +6168,24 @@ TASK [pinger : Pinger service] *************************************************
 ok: [EphemeralShine-3]
 
 PLAY RECAP *********************************************************************
-EphemeralShine-1           : ok=63   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
-EphemeralShine-2           : ok=63   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+EphemeralShine-1           : ok=64   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+EphemeralShine-2           : ok=64   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 EphemeralShine-3           : ok=66   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 + ansible all -b -m reboot -a test_command=uptime
+EphemeralShine-3 | CHANGED => {
+    "changed": true,
+    "elapsed": 53,
+    "rebooted": true
+}
 EphemeralShine-1 | CHANGED => {
     "changed": true,
-    "elapsed": 55,
+    "elapsed": 59,
     "rebooted": true
 }
 EphemeralShine-2 | CHANGED => {
     "changed": true,
-    "elapsed": 55,
-    "rebooted": true
-}
-EphemeralShine-3 | CHANGED => {
-    "changed": true,
-    "elapsed": 56,
+    "elapsed": 67,
     "rebooted": true
 }
 + ansible-playbook infra.yaml --diff
@@ -6174,13 +6194,13 @@ PLAY [Initial setup] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [EphemeralShine-3]
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [init : Update APT cache] *************************************************
-ok: [EphemeralShine-3]
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
+ok: [EphemeralShine-3]
 
 TASK [init : Backup user] ******************************************************
 ok: [EphemeralShine-2]
@@ -6194,13 +6214,13 @@ ok: [EphemeralShine-3]
 
 TASK [init : Prometheus node exporters, duplicity and certs] *******************
 ok: [EphemeralShine-1]
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-3]
+ok: [EphemeralShine-2]
 
 TASK [init : prometheus-node-exporter service] *********************************
+ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
 ok: [EphemeralShine-2]
-ok: [EphemeralShine-1]
 
 TASK [init : Backup restore directory] *****************************************
 ok: [EphemeralShine-1]
@@ -6210,25 +6230,25 @@ ok: [EphemeralShine-2]
 PLAY [DNS server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [EphemeralShine-3]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-3]
 ok: [EphemeralShine-2]
 
 TASK [bind : bind packages] ****************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-3]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [bind : dns named confs] **************************************************
 ok: [EphemeralShine-3] => (item=None)
-ok: [EphemeralShine-1] => (item=None)
 ok: [EphemeralShine-2] => (item=None)
 ok: [EphemeralShine-1] => (item=None)
 ok: [EphemeralShine-3] => (item=None)
-ok: [EphemeralShine-2] => (item=None)
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
+ok: [EphemeralShine-2] => (item=None)
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1] => (item=None)
+ok: [EphemeralShine-1]
 
 TASK [bind : Dns zone] *********************************************************
 skipping: [EphemeralShine-1]
@@ -6253,38 +6273,38 @@ ok: [EphemeralShine-3]
 ok: [EphemeralShine-1]
 
 TASK [bind : bind service] *****************************************************
+ok: [EphemeralShine-2]
 ok: [EphemeralShine-3]
 ok: [EphemeralShine-1]
-ok: [EphemeralShine-2]
 
 TASK [bind : bind exporter service] ********************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
+ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 PLAY [Systemd resolved] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [EphemeralShine-2]
-ok: [EphemeralShine-3]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-3]
+ok: [EphemeralShine-2]
 
 TASK [systemd_resolved : Stop systemd-resolved] ********************************
+ok: [EphemeralShine-1]
 ok: [EphemeralShine-3]
 ok: [EphemeralShine-2]
-ok: [EphemeralShine-1]
 
 TASK [systemd_resolved : Resolve configuration] ********************************
-ok: [EphemeralShine-3]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-3]
 ok: [EphemeralShine-2]
 
 TASK [CNAME record] ************************************************************
 
 TASK [dns_record : Create CNAME record for local machine] **********************
 ok: [EphemeralShine-3]
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [systemd_resolved : Rsyslog config] ***************************************
 ok: [EphemeralShine-1]
@@ -6298,8 +6318,8 @@ ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
 
 TASK [mysql : Mysql exporter config] *******************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [mysql : Mysql packages] **************************************************
 ok: [EphemeralShine-2]
@@ -6310,24 +6330,24 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [mysql : Mysql config] ****************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [mysql : MySQL agama user] ************************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [mysql : MySQL exporter user] *********************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [mysql : MySQL replication user] ******************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [mysql : Mysql services] **************************************************
-ok: [EphemeralShine-1] => (item=mysql)
 ok: [EphemeralShine-2] => (item=mysql)
+ok: [EphemeralShine-1] => (item=mysql)
 ok: [EphemeralShine-2] => (item=prometheus-mysqld-exporter)
 ok: [EphemeralShine-1] => (item=prometheus-mysqld-exporter)
 
@@ -6336,24 +6356,24 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [mysql : Backup user] *****************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [mysql : Mysql exporter config] *******************************************
 ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [mysql : Cron tab for mysql backup] ***************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [mysql : Slave metrics] ***************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [mysql : MySQL replica read-only mode] ************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [CNAME record] ************************************************************
 
@@ -6423,20 +6443,20 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [docker : Docker packages] ************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [docker : Docker service] *************************************************
 ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [agama : Agama directory] *************************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [agama : Agama application] ***********************************************
-ok: [EphemeralShine-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
 ok: [EphemeralShine-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
+ok: [EphemeralShine-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
 ok: [EphemeralShine-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
 ok: [EphemeralShine-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
 
@@ -6447,28 +6467,38 @@ ok: [EphemeralShine-1]
 TASK [agama : Agama  container] ************************************************
 ok: [EphemeralShine-2] => (item=None)
 ok: [EphemeralShine-1] => (item=None)
-ok: [EphemeralShine-2] => (item=None)
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1] => (item=None)
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2] => (item=None)
+ok: [EphemeralShine-2]
+
+TASK [agama : containers named "agama" + integer] ******************************
+ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
+
+TASK [agama : Remove containers not in agama_containers list] ******************
+skipping: [EphemeralShine-1] => (item=/agama2) 
+skipping: [EphemeralShine-1] => (item=/agama1) 
+skipping: [EphemeralShine-2] => (item=/agama2) 
+skipping: [EphemeralShine-2] => (item=/agama1) 
 
 TASK [CNAME record] ************************************************************
 
 TASK [dns_record : Create CNAME record for local machine] **********************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [nginx : Nginx packages] **************************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [nginx : Nginx service] ***************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [nginx : Config file] *****************************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [nginx : Nginx services] **************************************************
 ok: [EphemeralShine-2] => (item=nginx)
@@ -6479,8 +6509,8 @@ ok: [EphemeralShine-1] => (item=prometheus-nginx-exporter)
 PLAY [Keepalived] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived packages] ****************************************
 ok: [EphemeralShine-1]
@@ -6495,42 +6525,42 @@ ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived script file] *************************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived exporter archive] ********************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived exporter binary] *********************************
-ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
+ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived exporter service config] *************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [keepalived : Keepalived service] *****************************************
 ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
 
 TASK [keepalived : Keepalived exporter service] ********************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 PLAY [Haproxy] *****************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [haproxy : Haproxy packages] **********************************************
 ok: [EphemeralShine-2]
 ok: [EphemeralShine-1]
 
 TASK [haproxy : Haproxy Config] ************************************************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 TASK [haproxy : Haproxy exporter config] ***************************************
 ok: [EphemeralShine-2]
@@ -6547,8 +6577,8 @@ ok: [EphemeralShine-1]
 TASK [CNAME record] ************************************************************
 
 TASK [dns_record : Create CNAME record for local machine] **********************
-ok: [EphemeralShine-1]
 ok: [EphemeralShine-2]
+ok: [EphemeralShine-1]
 
 PLAY [Prometheus] **************************************************************
 
@@ -6649,9 +6679,9 @@ TASK [pinger : Pinger service] *************************************************
 ok: [EphemeralShine-3]
 
 PLAY RECAP *********************************************************************
-EphemeralShine-1           : ok=63   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
-EphemeralShine-2           : ok=63   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+EphemeralShine-1           : ok=64   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+EphemeralShine-2           : ok=64   changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
 EphemeralShine-3           : ok=66   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 + date
-E 18 dets  2023 00:37:54 EET
+K 20 dets  2023 14:17:01 EET
