@@ -24,6 +24,7 @@
   ansible.builtin.copy:
    dest: /opt/grafana/provisioning/datasources/default.yaml
    src: datasources.yaml
+  notify: Restart grafana
 
 - name: Grafana dashboards jsons
   ansible.builtin.copy:

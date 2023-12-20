@@ -29,6 +29,20 @@
   loop: "{{ agama_containers }}"
   no_log: true
 
+- name: containers named "agama" + integer
+  community.docker.docker_host_info:
+    containers: true
+    containers_filters:
+      name: '^agama[0-9]+$'
+  register: result
+
+- name: Remove containers not in agama_containers list
+  community.docker.docker_container:
+    name: "{{ item | regex_replace('^/', '') }}" 
+    state: absent
+  with_items: "{{ result.containers | map(attribute='Names') | list}}"
+  when: "item | regex_replace('^/', '') not in agama_containers | map(attribute='name')"
+
 - name: CNAME record
   ansible.builtin.include_role:
     name: dns_record
